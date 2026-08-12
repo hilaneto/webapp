@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Validação de CPF</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+
+<body>
+    <h1>Validação de CPF</h1>
+    <hr>
+    <form method="POST"
+          action="{{ url_for('cpf.validar') }}">
+        <label for="cpf">CPF:</label>
+        <input
+            type="text"
+            id="cpf"
+            name="cpf"
+            placeholder="Digite o CPF"
+            maxlength="14"
+            required
+        >
+        <button type="submit">
+            Validar
+        </button>
+    </form>
+    <hr>
+    {% if resultado is not none %}
+        {% if resultado %}
+            <p>CPF válido.</p>
+        {% else %}
+            <p>CPF inválido.</p>
+        {% endif %}
+    {% endif %}
+</body>
+
+</html>
