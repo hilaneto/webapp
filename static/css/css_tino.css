@@ -1,0 +1,855 @@
+/* =========================================================
+   TEMA PRINCIPAL
+   Baseado no Business Casual
+   Paleta: Cinza Escuro + Cinza Claro + Dourado
+   ========================================================= */
+
+:root {
+    /* -----------------------------------------------------
+       Cores principais
+       ----------------------------------------------------- */
+
+    --bs-primary: #e6a756;
+    --bs-primary-rgb: 230, 167, 86;
+
+    --bs-secondary: #d6d8db;
+    --bs-secondary-rgb: 214, 216, 219;
+
+    --bs-dark: #343a40;
+    --bs-dark-rgb: 52, 58, 64;
+
+    --bs-black: #343a40;
+    --bs-black-rgb: 52, 58, 64;
+
+    --bs-white: #ffffff;
+    --bs-white-rgb: 255, 255, 255;
+
+    /* -----------------------------------------------------
+       Escala de cinza
+       ----------------------------------------------------- */
+
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+
+    /* -----------------------------------------------------
+       Estados Bootstrap
+       ----------------------------------------------------- */
+
+    --bs-success: #198754;
+    --bs-success-rgb: 25, 135, 84;
+
+    --bs-info: #0dcaf0;
+    --bs-info-rgb: 13, 202, 240;
+
+    --bs-warning: #ffc107;
+    --bs-warning-rgb: 255, 193, 7;
+
+    --bs-danger: #dc3545;
+    --bs-danger-rgb: 220, 53, 69;
+
+    --bs-light: #f8f9fa;
+    --bs-light-rgb: 248, 249, 250;
+
+    /* -----------------------------------------------------
+       Links
+       ----------------------------------------------------- */
+
+    --bs-link-color: #e6a756;
+    --bs-link-hover-color: #b88645;
+
+    /* -----------------------------------------------------
+       Corpo
+       ----------------------------------------------------- */
+
+    --bs-body-color: #343a40;
+    --bs-body-color-rgb: 52, 58, 64;
+
+    --bs-body-bg: #d6d8db;
+    --bs-body-bg-rgb: 214, 216, 219;
+
+    --bs-body-font-family:
+        Lora,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+
+    /* -----------------------------------------------------
+       Bordas
+       ----------------------------------------------------- */
+
+    --bs-border-width: 1px;
+    --bs-border-style: solid;
+    --bs-border-color: #adb5bd;
+    --bs-border-color-translucent: rgba(52, 58, 64, 0.175);
+
+    --bs-border-radius: 0.375rem;
+    --bs-border-radius-sm: 0.25rem;
+    --bs-border-radius-lg: 0.5rem;
+    --bs-border-radius-xl: 1rem;
+    --bs-border-radius-2xl: 2rem;
+    --bs-border-radius-pill: 50rem;
+
+    /* -----------------------------------------------------
+       Tipografia
+       ----------------------------------------------------- */
+
+    --bs-heading-font-family:
+        "Raleway",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    /* -----------------------------------------------------
+       Código
+       ----------------------------------------------------- */
+
+    --bs-code-color: #d63384;
+
+    /* -----------------------------------------------------
+       Destaques
+       ----------------------------------------------------- */
+
+    --bs-highlight-bg: #fff3cd;
+
+    /* -----------------------------------------------------
+       Gradiente
+       ----------------------------------------------------- */
+
+    --bs-gradient:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.15),
+            rgba(255, 255, 255, 0)
+        );
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+
+    color: var(--bs-body-color);
+
+    background-color: var(--bs-body-bg);
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(52, 58, 64, 0);
+}
+
+
+/* =========================================================
+   TIPOGRAFIA
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+
+    font-family: var(--bs-heading-font-family);
+
+    font-weight: 500;
+    line-height: 1.2;
+
+    color: #343a40;
+}
+
+
+h1,
+.h1 {
+    font-size: calc(1.375rem + 1.5vw);
+}
+
+
+h2,
+.h2 {
+    font-size: calc(1.325rem + 0.9vw);
+}
+
+
+h3,
+.h3 {
+    font-size: calc(1.3rem + 0.6vw);
+}
+
+
+h4,
+.h4 {
+    font-size: calc(1.275rem + 0.3vw);
+}
+
+
+h5,
+.h5 {
+    font-size: 1.25rem;
+}
+
+
+h6,
+.h6 {
+    font-size: 1rem;
+}
+
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+
+strong,
+b {
+    color: #343a40;
+}
+
+
+small,
+.small {
+    font-size: 0.875em;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    color: var(--bs-link-color);
+    text-decoration: underline;
+}
+
+
+a:hover {
+    color: var(--bs-link-hover-color);
+}
+
+
+/* =========================================================
+   LINHA
+   ========================================================= */
+
+hr {
+    margin: 1rem 0;
+
+    color: #343a40;
+
+    border: 0;
+    border-top: 1px solid;
+
+    opacity: 0.25;
+}
+
+
+/* =========================================================
+   LISTAS
+   ========================================================= */
+
+ol,
+ul {
+    padding-left: 2rem;
+}
+
+
+ol,
+ul,
+dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+
+dt {
+    font-weight: 700;
+}
+
+
+dd {
+    margin-bottom: 0.5rem;
+    margin-left: 0;
+}
+
+
+/* =========================================================
+   TEXTO
+   ========================================================= */
+
+.text-primary {
+    color: #e6a756 !important;
+}
+
+
+.text-secondary {
+    color: #6c757d !important;
+}
+
+
+.text-dark {
+    color: #343a40 !important;
+}
+
+
+.text-light {
+    color: #f8f9fa !important;
+}
+
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+
+/* =========================================================
+   FUNDOS
+   ========================================================= */
+
+.bg-primary {
+    background-color: #e6a756 !important;
+}
+
+
+.bg-secondary {
+    background-color: #d6d8db !important;
+}
+
+
+.bg-dark {
+    background-color: #343a40 !important;
+}
+
+
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+
+.bg-white {
+    background-color: #ffffff !important;
+}
+
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+
+.btn {
+    display: inline-block;
+
+    padding: 0.375rem 0.75rem;
+
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+
+    color: #343a40;
+
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+
+    cursor: pointer;
+
+    background-color: transparent;
+
+    border: 1px solid transparent;
+    border-radius: 0.375rem;
+
+    transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out;
+}
+
+
+.btn-primary {
+    color: #343a40;
+
+    background-color: #e6a756;
+    border-color: #e6a756;
+}
+
+
+.btn-primary:hover {
+    color: #343a40;
+
+    background-color: #d99645;
+    border-color: #d99645;
+}
+
+
+.btn-secondary {
+    color: #343a40;
+
+    background-color: #d6d8db;
+    border-color: #c5c8cb;
+}
+
+
+.btn-secondary:hover {
+    color: #343a40;
+
+    background-color: #c5c8cb;
+    border-color: #b8bbbe;
+}
+
+
+.btn-dark {
+    color: #ffffff;
+
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+
+.btn-dark:hover {
+    color: #ffffff;
+
+    background-color: #495057;
+    border-color: #495057;
+}
+
+
+.btn-light {
+    color: #343a40;
+
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+
+.btn-light:hover {
+    background-color: #e9ecef;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+    background-color: #ffffff;
+
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+
+    box-shadow:
+        0 0.125rem 0.25rem rgba(52, 58, 64, 0.10);
+}
+
+
+.card-header {
+    padding: 0.75rem 1rem;
+
+    color: #343a40;
+
+    background-color: #d6d8db;
+
+    border-bottom: 1px solid #ced4da;
+}
+
+
+.card-body {
+    padding: 1rem;
+
+    background-color: #ffffff;
+}
+
+
+.card-footer {
+    padding: 0.75rem 1rem;
+
+    background-color: #f8f9fa;
+
+    border-top: 1px solid #ced4da;
+}
+
+
+/* =========================================================
+   FORMULÁRIOS
+   ========================================================= */
+
+.form-control {
+    display: block;
+
+    width: 100%;
+
+    padding: 0.375rem 0.75rem;
+
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+
+    color: #343a40;
+
+    background-color: #ffffff;
+
+    border: 1px solid #adb5bd;
+    border-radius: 0.375rem;
+
+    appearance: none;
+}
+
+
+.form-control:focus {
+    color: #343a40;
+
+    background-color: #ffffff;
+
+    border-color: #e6a756;
+
+    outline: 0;
+
+    box-shadow:
+        0 0 0 0.25rem rgba(230, 167, 86, 0.25);
+}
+
+
+.form-label {
+    margin-bottom: 0.5rem;
+
+    color: #343a40;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   TABELAS
+   ========================================================= */
+
+.table {
+    width: 100%;
+
+    margin-bottom: 1rem;
+
+    vertical-align: top;
+
+    color: #343a40;
+
+    border-color: #dee2e6;
+}
+
+
+.table th {
+    font-weight: 600;
+
+    color: #ffffff;
+
+    background-color: #343a40;
+}
+
+
+.table td,
+.table th {
+    padding: 0.75rem;
+
+    border-bottom: 1px solid #dee2e6;
+}
+
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(214, 216, 219, 0.35);
+}
+
+
+.table-hover tbody tr:hover {
+    background-color: rgba(230, 167, 86, 0.12);
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    background-color: #343a40 !important;
+}
+
+
+.navbar-brand {
+    color: #ffffff !important;
+
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+}
+
+
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+}
+
+
+.navbar-nav .nav-link:hover {
+    color: #e6a756 !important;
+}
+
+
+/* =========================================================
+   DROPDOWN
+   ========================================================= */
+
+.dropdown-menu {
+    background-color: #ffffff;
+
+    border: 1px solid #ced4da;
+
+    box-shadow:
+        0 0.5rem 1rem rgba(52, 58, 64, 0.15);
+}
+
+
+.dropdown-item {
+    color: #343a40;
+}
+
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #343a40;
+
+    background-color: #d6d8db;
+}
+
+
+/* =========================================================
+   ALERTAS
+   ========================================================= */
+
+.alert {
+    position: relative;
+
+    padding: 1rem 1rem;
+
+    margin-bottom: 1rem;
+
+    border: 1px solid transparent;
+
+    border-radius: 0.375rem;
+}
+
+
+.alert-primary {
+    color: #343a40;
+
+    background-color: rgba(230, 167, 86, 0.20);
+
+    border-color: rgba(230, 167, 86, 0.35);
+}
+
+
+.alert-secondary {
+    color: #343a40;
+
+    background-color: #d6d8db;
+
+    border-color: #c5c8cb;
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.badge {
+    display: inline-block;
+
+    padding: 0.35em 0.65em;
+
+    font-size: 0.75em;
+    font-weight: 700;
+
+    line-height: 1;
+
+    color: #ffffff;
+
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+
+    border-radius: 0.375rem;
+}
+
+
+.badge-primary {
+    color: #343a40;
+
+    background-color: #e6a756;
+}
+
+
+.badge-secondary {
+    color: #343a40;
+
+    background-color: #d6d8db;
+}
+
+
+.badge-dark {
+    color: #ffffff;
+
+    background-color: #343a40;
+}
+
+
+/* =========================================================
+   BORDAS
+   ========================================================= */
+
+.border {
+    border: 1px solid #dee2e6 !important;
+}
+
+
+.border-primary {
+    border-color: #e6a756 !important;
+}
+
+
+.border-secondary {
+    border-color: #d6d8db !important;
+}
+
+
+.border-dark {
+    border-color: #343a40 !important;
+}
+
+
+/* =========================================================
+   SOMBRAS
+   ========================================================= */
+
+.shadow-sm {
+    box-shadow:
+        0 0.125rem 0.25rem rgba(52, 58, 64, 0.075) !important;
+}
+
+
+.shadow {
+    box-shadow:
+        0 0.5rem 1rem rgba(52, 58, 64, 0.15) !important;
+}
+
+
+.shadow-lg {
+    box-shadow:
+        0 1rem 3rem rgba(52, 58, 64, 0.175) !important;
+}
+
+
+/* =========================================================
+   SELEÇÃO DE TEXTO
+   ========================================================= */
+
+::selection {
+    color: #343a40;
+
+    background-color: #e6a756;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #d6d8db;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #343a40;
+
+    border-radius: 5px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: #495057;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+    h1,
+    .h1 {
+        font-size: 2.5rem;
+    }
+
+    h2,
+    .h2 {
+        font-size: 2rem;
+    }
+
+    h3,
+    .h3 {
+        font-size: 1.75rem;
+    }
+
+    h4,
+    .h4 {
+        font-size: 1.5rem;
+    }
+}
