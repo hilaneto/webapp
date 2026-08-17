@@ -45,55 +45,32 @@
 
             <!-- Dólar -->
             <div class="col-12 col-md-6 col-lg-3">
-
                 <div class="card h-100 text-center shadow-sm">
-
                     <div class="card-body">
-
-                        <h5 class="card-title">
-                            Dólar
-                        </h5>
-
-                        <p class="display-6 fw-bold">
-                            R$ 5,XX
-                        </p>
-
-                        <p class="text-muted mb-0">
-                            Cotação atual
-                        </p>
-
+                        <h2>Dólar</h2>
+                        <p class="display-6 fw-bold"> R$ {{ "%.2f"|format(dolar_valor) }} </p>
+                        <p> Variação: {{ "%.3f"|format(dolar_variacao) }}% </p>
+                        <p> {{ dolar_atualizacao }} </p>
                     </div>
-
                 </div>
-
             </div>
-
 
             <!-- IPCA -->
             <div class="col-12 col-md-6 col-lg-3">
-
                 <div class="card h-100 text-center shadow-sm">
-
                     <div class="card-body">
-
                         <h5 class="card-title">
                             IPCA
                         </h5>
-
                         <p class="display-6 fw-bold">
                             0,XX%
                         </p>
-
                         <p class="text-muted mb-0">
                             Acumulado em 12 meses
                         </p>
-
                     </div>
-
                 </div>
-
             </div>
-
 
             <!-- Taxa Selic -->
             <div class="col-12 col-md-6 col-lg-3">
