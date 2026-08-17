@@ -48,3 +48,4 @@ class Conexao:
 # Interface pública ==================================================
 def conectar():
     return Conexao()
+
