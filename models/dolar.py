@@ -14,6 +14,7 @@ class Dolar(Model):
     status = BooleanField( default=True, null=False )
     dt_referencia = DateTimeField( default=datetime.now, null=False )
     dt_atualizacao = DateTimeField( default=datetime.now, null=False )
+    
     class Meta:
         database = db
         table_name = "tb_dolar"
@@ -28,9 +29,9 @@ class Dolar(Model):
     @staticmethod
     def atual():
         with conectar():
-            return (Dolar.select().order_by(Dolar.dt_referencia.desc()).first())
+            return (Dolar.select().where(Dolar.status == True).order_by(Dolar.dt_referencia.desc()).first())
 
-    # Teste: o mesmo resultado que o método dolar_atual() -------------------------------------
+    # Teste com SQL puro o mesmo resultado que o método dolar_atual() -------------------------------------
     @staticmethod
     def select_dolar_atual():
         with conectar() as db:

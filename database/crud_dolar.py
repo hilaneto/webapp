@@ -1,26 +1,32 @@
 
-from database.conexao import conectar
-from models.dolar import CrudDolar, Dolar
 from peewee import IntegrityError
+from database.conexao import conectar
+from models.dolar import Dolar, CrudDolar
 from datetime import datetime
 
-dados_api = Dolar.buscar()
-dolar_api = dados_api["USDBRL"]
+def atualizar_dolar():
 
-dt_referencia = datetime.strptime( dolar_api["create_date"], "%Y-%m-%d %H:%M:%S" )
-
-dados = {"valor": dolar_api["bid"],
-         "variacao": dolar_api["pctChange"],
-         "dt_referencia": dt_referencia,
-         "dt_atualizacao": datetime.now()
-        }
-
-with conectar():
     try:
+        dados_api = Dolar.buscar()
+        dolar_api = dados_api["USDBRL"]
+        dados = {"valor": dolar_api["bid"],
+                 "variacao": dolar_api["pctChange"],
+                 "dt_referencia": datetime.strptime(dolar_api["create_date"],
+                 "%Y-%m-%d %H:%M:%S"),
+                 "dt_atualizacao": datetime.now(),
+                 "status": True}
+
+    except Exception as erro:
+        dados = {"valor": 0,
+                "variacao": 0,
+                "dt_referencia": datetime.now(),
+                "dt_atualizacao": datetime.now(),
+                "status": False}
+        print(f"Erro ao atualizar dólar: {erro}")
+
+    with conectar():
         crud = CrudDolar()
-        resultado = crud.inserir(**dados)
-        print(resultado)
-    except TypeError as erro:
-        print(f"Erro de tipo: {erro}")
-    except IntegrityError as erro:
-        print(f"Erro do PostgreSQL: {erro}")        
+        crud.inserir(**dados)
+
+if __name__ == "__main__":
+    atualizar_dolar()
