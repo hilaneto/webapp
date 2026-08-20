@@ -1,8 +1,6 @@
 import requests
-
 from peewee import Model, AutoField, DecimalField, DateTimeField, BooleanField
 from datetime import datetime
-
 from database.conexao import db
 from database.conexao import conectar
 from database.crud_base import CrudBase
@@ -18,13 +16,6 @@ class Dolar(Model):
     class Meta:
         database = db
         table_name = "tb_dolar"
-
-    @staticmethod
-    def buscar():
-        url = "https://economia.awesomeapi.com.br/json/last/USD-BRL"
-        resposta = requests.get( url, timeout=10 )
-        resposta.raise_for_status()
-        return resposta.json()
 
     @staticmethod
     def atual():
