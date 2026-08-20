@@ -7,17 +7,15 @@ home_bp = Blueprint('home', __name__)
 @home_bp.route("/")
 def home():
 
-
     # Dólar -----------------------------------------------------
     dolar_atual = Dolar.atual()
     vl_dolar = float(dolar_atual.valor)
-    vr_dolar = float(dolar_atual.variacao)
     dtref_dolar = dolar_atual.dt_referencia
 
-# IPCA ------------------------------------------------------
+    # IPCA ------------------------------------------------------
     meses = ["Janeiro", "Fevereiro", "Março", "Abril",
-             "Maio", "Junho", "Julho", "Agosto",
-             "Setembro", "Outubro", "Novembro", "Dezembro"]
+            "Maio", "Junho", "Julho", "Agosto",
+            "Setembro", "Outubro", "Novembro", "Dezembro"]
 
     ipca_atual = Ipca.atual()
     vl_ipca = float(ipca_atual.indice)
@@ -34,7 +32,6 @@ def home():
         "home.html",
 
         vl_dolar=vl_dolar,
-        vr_dolar=vr_dolar,
         dtref_dolar=dtref_dolar,
 
         vl_ipca=vl_ipca_formato,

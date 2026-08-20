@@ -8,7 +8,6 @@ from database.crud_base import CrudBase
 class Dolar(Model):
     cd_dolar = AutoField()
     valor = DecimalField( max_digits=10, decimal_places=2 )
-    variacao = DecimalField( max_digits=8, decimal_places=5 )
     status = BooleanField( default=True, null=False )
     dt_referencia = DateTimeField( default=datetime.now, null=False )
     dt_atualizacao = DateTimeField( default=datetime.now, null=False )

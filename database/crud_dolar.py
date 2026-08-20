@@ -2,23 +2,21 @@
 from peewee import IntegrityError
 from database.conexao import conectar
 from models.dolar import Dolar, CrudDolar
-from datetime import datetime
+from datetime import date, datetime
 
 def atualizar_dolar():
 
     try:
         dados_api = Dolar.buscar()
         dolar_api = dados_api["USDBRL"]
-        dados = {"valor": dolar_api["bid"],
-                 "variacao": dolar_api["pctChange"],
-                 "dt_referencia": datetime.strptime(dolar_api["create_date"],
+        dados = {"valor": dolar_api["valor"],
+                 "dt_referencia": date.strptime(dolar_api["data"],
                  "%Y-%m-%d %H:%M:%S"),
                  "dt_atualizacao": datetime.now(),
                  "status": True}
 
     except Exception as erro:
         dados = {"valor": 0,
-                "variacao": 0,
                 "dt_referencia": datetime.now(),
                 "dt_atualizacao": datetime.now(),
                 "status": False}
