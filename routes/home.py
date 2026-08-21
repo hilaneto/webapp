@@ -10,7 +10,7 @@ def home():
     # Dólar -----------------------------------------------------
     dolar_atual = Dolar.atual()
     vl_dolar = float(dolar_atual.valor)
-    dtref_dolar = dolar_atual.dt_referencia
+    dtref_dolar = dolar_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
 
     # IPCA ------------------------------------------------------
     meses = ["Janeiro", "Fevereiro", "Março", "Abril",
