@@ -3,7 +3,7 @@ from datetime import datetime
 from database.conexao import db, conectar
 from database.crud_base import CrudBase
 
-class Dolar(Model):
+class Moeda(Model):
     cd_moeda = AutoField()
     valor = DecimalField(max_digits=18, decimal_places=5)
     status = BooleanField(default=True, null=False)
@@ -16,9 +16,9 @@ class Dolar(Model):
         table_name = "tb_moeda"
 
     @staticmethod
-    def atual():
+    def atual(codigo):
         with conectar():
-            return (Dolar.select().where((Dolar.status == True) & (Dolar.moeda == "USD")).order_by(Dolar.dt_referencia.desc()).first())
+            return (Moeda.select().where((Moeda.status == True) & (Moeda.moeda == codigo)).order_by(Moeda.dt_referencia.desc()).first())
 
     @staticmethod
     def select_dolar_atual():
@@ -26,6 +26,6 @@ class Dolar(Model):
             dolar = db.execute_sql("""SELECT * FROM tb_moeda WHERE status = true AND moeda = 'USD' ORDER BY dt_referencia DESC LIMIT 1;""").fetchone()
             return dolar
 
-class CrudDolar(CrudBase):
+class CrudMoeda(CrudBase):
     def __init__(self):
-        super().__init__(Dolar)
+        super().__init__(Moeda)

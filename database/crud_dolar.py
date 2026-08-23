@@ -1,6 +1,6 @@
 from peewee import IntegrityError
 from database.conexao import conectar
-from models.dolar import Dolar, CrudDolar
+from models.moeda import Dolar, CrudDolar
 from datetime import date, datetime
 
 def atualizar_dolar():

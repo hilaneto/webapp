@@ -41,51 +41,96 @@
              INDICADORES PRINCIPAIS
         ====================================================== -->
 
-        <section class="row g-4 mb-4 justify-content-center">
+<div class="row justify-content-center">
+    
+       <section class="p-3 mb-4 rounded" style="background-color: #f5f5f5;">
 
-            <!-- Dólar -->
-            <div class="col-12 col-md-6 col-lg-2">
+    <div class="text-center fw-bold mb-3">
+        Câmbio
+    </div>
+
+    <div class="row g-3 justify-content-center">
+
+        <!-- Dólar -->
+        <div class="col-12 col-md-6 col-lg-2">
+            <div class="card text-center shadow-sm">
+                <div class="card-body py-2 px-3">
+                    <h5 class="mb-1">Dólar</h5>
+                    <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_dolar }} </p>
+                    <p class="small mb-0 text-muted lh-sm"> {{ dtref_dolar }} </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Euro -->
+        <div class="col-12 col-md-6 col-lg-2">
+            <div class="card text-center shadow-sm">
+                <div class="card-body py-2 px-3">
+                    <h5 class="mb-1">Euro</h5>
+                    <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_euro }} </p>
+                    <p class="small mb-0 text-muted lh-sm"> {{ dtref_euro }} </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bitcoin -->
+        <div class="col-12 col-md-6 col-lg-2">
+            <div class="card text-center shadow-sm">
+                <div class="card-body py-2 px-3">
+                    <h5 class="mb-1">Bitcoin</h5>
+                    <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_bitcoin }} </p>
+                    <p class="small mb-0 text-muted lh-sm"> {{ dtref_bitcoin }} </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<section class="p-3 mb-4 rounded" style="background-color: #eeeeee;">
+
+    <div class="text-center fw-bold mb-3">
+        Indicadores
+    </div>
+
+    <div class="row g-3 justify-content-center">
+
+        <!-- IPCA -->
+        <div class="col-12 col-md-6 col-lg-2">
+            <div class="card text-center shadow-sm">
+                <div class="card-body py-2 px-3">
+                    <h5 class="mb-1">IPCA</h5>
+                    <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_ipca }} </p>
+                    <p class="small mb-0 text-muted lh-sm"> {{ dtref_ipca }} </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selic -->
+        <div class="col-12 col-md-6 col-lg-2">
                 <div class="card text-center shadow-sm">
                     <div class="card-body py-2 px-3">
-                        <h5 class="mb-1">Dólar</h5>
-                        <p class="fs-4 fw-bold mb-0 lh-sm"> R$ {{ "%.2f"|format(vl_dolar) }} </p>
-                        <p class="small mb-0 text-muted lh-sm"> {{ dtref_dolar }} </p>
+                        <h5 class="mb-1">Selic</h5>
+                        <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_selic }} </p>
+                        <p class="small mb-0 text-muted lh-sm"> {{ dtref_selic }} </p>
                     </div>
                 </div>
             </div>
 
-            <!-- IPCA -->
-            <div class="col-12 col-md-6 col-lg-2">
-                <div class="card text-center shadow-sm">
-                    <div class="card-body py-2 px-3">
-                        <h5 class="mb-1">IPCA</h5>
-                        <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_ipca }} </p>
-                        <p class="small mb-0 text-muted lh-sm"> {{ dtref_ipca }} </div>
+        <!-- Salário Mínimo -->
+        <div class="col-12 col-md-6 col-lg-2">
+            <div class="card text-center shadow-sm">
+                <div class="card-body py-2 px-3">
+                    <h5 class="mb-1">Salário Mínimo</h5>
+                    <p class="fs-4 fw-bold mb-0 lh-sm"> {{ vl_salario }} </p>
+                    <p class="small mb-0 text-muted lh-sm"> {{ dtref_salario }} </p>
                 </div>
             </div>
+        </div>
 
-            <!-- Taxa Selic -->
-            <div class="col-12 col-md-6 col-lg-2">
-                <div class="card text-center shadow-sm">
-                    <div class="card-body py-2 px-3">
-                        <h5 class="mb-1">Taxa Selic</h5>
-                        <p class="fs-4 fw-bold mb-0 lh-sm"> XX,XX% </p>
-                        <p class="small mb-0 text-muted lh-sm"> Taxa vigente </p>
-                    </div>
-                </div>
-            </div>
+    </div>
 
-            <!-- Salário mínimo -->
-            <div class="col-12 col-md-6 col-lg-2">
-                <div class="card text-center shadow-sm">
-                    <div class="card-body py-2 px-3">
-                        <h5 class="mb-1">Salário Mínimo</h5>
-                        <p class="fs-4 fw-bold mb-0 lh-sm"> R$ 9.999,99 </p>
-                        <p class="small mb-0 text-muted lh-sm"> Valor vigente </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+</section>
 
 <h6 class="mb-1">
     <p>O IPCA é um índice que mede a variação de preços de um conjunto de produtos e serviços comercializados no varejo, sendo considerado o indicador oficial da inflação no Brasil.</p>

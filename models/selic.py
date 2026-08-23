@@ -1,12 +1,11 @@
-import requests
 from peewee import Model, AutoField, DecimalField, DateTimeField, DateField, BooleanField
 from datetime import datetime
 from database.conexao import db
 from database.conexao import conectar
 from database.crud_base import CrudBase
 
-class Ipca(Model):
-    cd_ipca = AutoField()
+class Selic(Model):
+    cd_selic = AutoField()
     indice = DecimalField(max_digits=8, decimal_places=5)
     status = BooleanField(default=True, null=False)
     dt_referencia = DateField(null=False)
@@ -14,18 +13,18 @@ class Ipca(Model):
     
     class Meta:
         database = db
-        table_name = "tb_ipca"
+        table_name = "tb_selic"
 
     @staticmethod
     def atual():
         with conectar():
-            return (Ipca.select().where(Ipca.status == True).order_by(Ipca.dt_referencia.desc()).first())
+            return (Selic.select().where(Selic.status == True).order_by(Selic.dt_referencia.desc()).first())
 
     @staticmethod
     def ultimos_6m():
         with conectar():
-            return list(Ipca.select().where(Ipca.status == True).order_by(Ipca.dt_referencia.desc()).limit(6))
+            return list(Selic.select().where(Selic.status == True).order_by(Selic.dt_referencia.desc()).limit(6))
 
-class CrudIpca(CrudBase):
+class CrudSelic(CrudBase):
     def __init__(self):
-        super().__init__(Ipca)
+        super().__init__(Selic)

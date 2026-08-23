@@ -1,16 +1,29 @@
 from flask import Blueprint, render_template
-from models.dolar import Dolar
+from models.moeda import Moeda
 from models.ipca import Ipca
+from models.selic import Selic
+from models.salario import Salario
 
 home_bp = Blueprint('home', __name__)
+
+def formatar_real(valor):
+    return f"R$ {valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".") 
 
 @home_bp.route("/")
 def home():
 
-    # Dólar -----------------------------------------------------
-    dolar_atual = Dolar.atual()
-    vl_dolar = float(dolar_atual.valor)
+    # Moedas ----------------------------------------------------
+    dolar_atual = Moeda.atual("USD")
+    euro_atual = Moeda.atual("EUR")
+    bitcoin_atual = Moeda.atual("BTC")
+
+    vl_dolar = formatar_real(float(dolar_atual.valor))
+    vl_euro = formatar_real(float(euro_atual.valor))
+    vl_bitcoin = formatar_real(float(bitcoin_atual.valor))
+
     dtref_dolar = dolar_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
+    dtref_euro = euro_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
+    dtref_bitcoin = bitcoin_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
 
     # IPCA ------------------------------------------------------
     meses = ["Janeiro", "Fevereiro", "Março", "Abril",
@@ -23,18 +36,36 @@ def home():
     dt = ipca_atual.dt_referencia
     dtref_ipca = f"{meses[dt.month - 1]} - {dt.year}"
 
-    # IPCA últimos 6 meses --------------------------------------
-    ipca_6_meses = Ipca.ultimos_6m()
-    ipca_6_meses.reverse()
+    # Selic ------------------------------------------------------
+    selic_atual = Selic.atual()
+    vl_selic = float(selic_atual.indice)
+    vl_selic_formato = f"{vl_selic:.2f}%".replace(".", ",")
+    dtref_selic = selic_atual.dt_referencia.strftime("%d/%m/%Y")
 
-# retorno ------------------------------------------------------
+    # Salário Mínimo -----------------------------------------------
+    salario_atual = Salario.atual()
+    vl_salario = formatar_real(float(salario_atual.vl_salario))
+    dtref_salario = salario_atual.dt_referencia.strftime("%d/%m/%Y")
+
+
     return render_template(
         "home.html",
 
         vl_dolar=vl_dolar,
         dtref_dolar=dtref_dolar,
 
+        vl_euro=vl_euro,
+        dtref_euro=dtref_euro,
+
+        vl_bitcoin=vl_bitcoin,
+        dtref_bitcoin=dtref_bitcoin,
+
         vl_ipca=vl_ipca_formato,
         dtref_ipca=dtref_ipca,
-        ipca_6_meses=ipca_6_meses
+
+        vl_selic=vl_selic_formato,
+        dtref_selic=dtref_selic,
+
+        vl_salario=vl_salario,
+        dtref_salario=dtref_salario,
     )
