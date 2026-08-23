@@ -1,4 +1,3 @@
-
 from peewee import IntegrityError
 from database.conexao import conectar
 from models.dolar import Dolar, CrudDolar
