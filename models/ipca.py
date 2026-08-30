@@ -1,4 +1,3 @@
-import requests
 from peewee import Model, AutoField, DecimalField, DateTimeField, DateField, BooleanField
 from datetime import datetime
 from database.conexao import db

@@ -3,11 +3,12 @@ from models.moeda import Moeda
 from models.ipca import Ipca
 from models.selic import Selic
 from models.salario import Salario
+from models.temperatura import Temperatura
 
 home_bp = Blueprint('home', __name__)
 
 def formatar_real(valor):
-    return f"R$ {valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".") 
+    return f"R$ {valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
 @home_bp.route("/")
 def home():
@@ -47,6 +48,27 @@ def home():
     vl_salario = formatar_real(float(salario_atual.vl_salario))
     dtref_salario = salario_atual.dt_referencia.strftime("%d/%m/%Y")
 
+    # Temperaturas ----------------------------------------------
+    dados_temperatura = Temperatura.atuais()
+
+    temperaturas = []
+
+    for registro in dados_temperatura:
+        temperaturas.append({
+            "regiao": registro.regiao,
+            "cidade": registro.cidade,
+            "temperatura": (
+                f"{float(registro.temperatura):.1f}°C".replace(".", ",")
+                if registro.temperatura is not None
+                else "--"
+            ),
+            "dt_referencia": (
+                registro.dt_referencia.strftime("%d/%m/%Y %H:%M")
+                if registro.dt_referencia
+                else "--"
+            ),
+            "status": registro.status
+        })
 
     return render_template(
         "home.html",
@@ -68,4 +90,8 @@ def home():
 
         vl_salario=vl_salario,
         dtref_salario=dtref_salario,
-    )
+
+        temperaturas=temperaturas
+        )
+        
+ 

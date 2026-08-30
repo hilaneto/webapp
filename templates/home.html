@@ -138,152 +138,129 @@
 
 
 <!-- =====================================================
-     TEMPERATURA E CALENDÁRIO
+     TEMPERATURA
 ====================================================== -->
+<!-- Temperaturas das Capitais -->
+<div class="col-12 col-md-6 col-lg-3">
+    <div class="card shadow-sm">
+        <div class="card-body py-2 px-3">
+            <div class="text-center mb-2 fw-bold"> Temperatura nas Capitais </div>
+            <div style="max-height: 220px; overflow-y: auto;">
+                {% for item in temperaturas %}
+                    <div class="d-flex justify-content-between align-items-center py-0 border-bottom"
+                         style="font-size: 0.80rem;">
+                        <span> {{ item.cidade }} </span>
+                        <strong> {{ item.temperatura }} </strong>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- =====================================================
+       C A L E N D Á R I O 
+     ===================================================== -->
 
 <section class="row g-2 mb-3 justify-content-center">
+    
+    <!-- Calendário -->
+    <div class="col-12 col-md-2">
 
-<!-- Temperatura -->
-<div class="col-12 col-md-6 col-lg-2">
+        <div class="card shadow-sm h-100">
 
-    <div class="card text-center shadow-sm h-100">
+            <div class="card-body py-1 px-3">
 
-        <div class="card-body py-2 px-3 d-flex flex-column">
-
-            <div class="text-center mb-1 fw-bold">
-                Temperatura no Brasil
-            </div>
-
-            <div class="mx-auto d-flex flex-column justify-content-around flex-grow-1 w-100"
-                 style="max-width: 220px;">
-
-                <div class="d-flex justify-content-between align-items-center">
-                    <span class="small">• Norte</span>
-                    <strong class="small">XX °C</strong>
+                <!-- Título -->
+                <div class="text-center mb-1 fw-bold">
+                    Agosto 2026
                 </div>
 
-                <div class="d-flex justify-content-between align-items-center">
-                    <span class="small">• Nordeste</span>
-                    <strong class="small">XX °C</strong>
+                <!-- Calendário centralizado -->
+                <div class="mx-auto" style="max-width: 180px;">
+
+                    <table class="table table-sm table-borderless text-center mb-0 calendario" style="font-size: 0.75rem;">
+
+                        <thead>
+                            <tr class="text-muted">
+                                <th>D</th>
+                                <th>S</th>
+                                <th>T</th>
+                                <th>Q</th>
+                                <th>Q</th>
+                                <th>S</th>
+                                <th>S</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>1</td>
+                                <td>2</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>9</td>
+                            </tr>
+
+                            <tr>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>14</td>
+                                <td>15</td>
+                                <td>16</td>
+                            </tr>
+
+                            <tr>
+                                <td>17</td>
+                                <td>18</td>
+                                <td>19</td>
+                                <td>20</td>
+                                <td>21</td>
+                                <td>22</td>
+                                <td>23</td>
+                            </tr>
+
+                            <tr>
+                                <td>24</td>
+                                <td>25</td>
+                                <td>26</td>
+                                <td>27</td>
+                                <td>28</td>
+                                <td>29</td>
+                                <td>30</td>
+                            </tr>
+
+                            <tr>
+                                <td>31</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
                 </div>
-
-                <div class="d-flex justify-content-between align-items-center">
-                    <span class="small">• Centro-Oeste</span>
-                    <strong class="small">XX °C</strong>
-                </div>
-
-                <div class="d-flex justify-content-between align-items-center">
-                    <span class="small">• Sudeste</span>
-                    <strong class="small">XX °C</strong>
-                </div>
-
-                <div class="d-flex justify-content-between align-items-center">
-                    <span class="small">• Sul</span>
-                    <strong class="small">XX °C</strong>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- Calendário -->
-<div class="col-12 col-md-2">
-
-    <div class="card shadow-sm h-100">
-
-        <div class="card-body py-1 px-3">
-
-            <!-- Título -->
-            <div class="text-center mb-1 fw-bold">
-                Agosto 2026
-            </div>
-
-            <!-- Calendário centralizado -->
-            <div class="mx-auto" style="max-width: 180px;">
-
-                <table class="table table-sm table-borderless text-center mb-0 calendario" style="font-size: 0.75rem;">
-
-                    <thead>
-                        <tr class="text-muted">
-                            <th>D</th>
-                            <th>S</th>
-                            <th>T</th>
-                            <th>Q</th>
-                            <th>Q</th>
-                            <th>S</th>
-                            <th>S</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>1</td>
-                            <td>2</td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                        </tr>
-
-                        <tr>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>12</td>
-                            <td>13</td>
-                            <td>14</td>
-                            <td>15</td>
-                            <td>16</td>
-                        </tr>
-
-                        <tr>
-                            <td>17</td>
-                            <td>18</td>
-                            <td>19</td>
-                            <td>20</td>
-                            <td>21</td>
-                            <td>22</td>
-                            <td>23</td>
-                        </tr>
-
-                        <tr>
-                            <td>24</td>
-                            <td>25</td>
-                            <td>26</td>
-                            <td>27</td>
-                            <td>28</td>
-                            <td>29</td>
-                            <td>30</td>
-                        </tr>
-
-                        <tr>
-                            <td>31</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
 
             </div>
 
@@ -291,95 +268,93 @@
 
     </div>
 
-</div>
+    </section>
+        
 
-</section>
-       
+    <!-- =====================================================
+        ACESSO AO SISTEMA
+    ====================================================== -->
 
-        <!-- =====================================================
-             ACESSO AO SISTEMA
-        ====================================================== -->
+            <section class="row justify-content-center">
 
-        <section class="row justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4">
 
-            <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm">
 
-                <div class="card shadow-sm">
+                        <div class="card-body">
 
-                    <div class="card-body">
-
-                        <h4 class="text-center mb-4">
-                            Acesso ao Sistema
-                        </h4>
+                            <h4 class="text-center mb-4">
+                                Acesso ao Sistema
+                            </h4>
 
 
-                        <form>
+                            <form>
 
-                            <!-- Usuário -->
-                            <div class="mb-3">
+                                <!-- Usuário -->
+                                <div class="mb-3">
 
-                                <label
-                                    for="usuario"
-                                    class="form-label"
-                                >
-                                    Usuário
-                                </label>
+                                    <label
+                                        for="usuario"
+                                        class="form-label"
+                                    >
+                                        Usuário
+                                    </label>
 
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="usuario"
-                                    name="usuario"
-                                    placeholder="Digite seu usuário"
-                                >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="usuario"
+                                        name="usuario"
+                                        placeholder="Digite seu usuário"
+                                    >
 
-                            </div>
-
-
-                            <!-- Senha -->
-                            <div class="mb-3">
-
-                                <label
-                                    for="senha"
-                                    class="form-label"
-                                >
-                                    Senha
-                                </label>
-
-                                <input
-                                    type="password"
-                                    class="form-control"
-                                    id="senha"
-                                    name="senha"
-                                    placeholder="Digite sua senha"
-                                >
-
-                            </div>
+                                </div>
 
 
-                            <!-- Botão -->
-                            <div class="d-grid">
+                                <!-- Senha -->
+                                <div class="mb-3">
 
-                                <button
-                                    type="submit"
-                                    class="btn btn-primary"
-                                >
-                                    Entrar
-                                </button>
+                                    <label
+                                        for="senha"
+                                        class="form-label"
+                                    >
+                                        Senha
+                                    </label>
 
-                            </div>
+                                    <input
+                                        type="password"
+                                        class="form-control"
+                                        id="senha"
+                                        name="senha"
+                                        placeholder="Digite sua senha"
+                                    >
 
-                        </form>
+                                </div>
+
+
+                                <!-- Botão -->
+                                <div class="d-grid">
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                    >
+                                        Entrar
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
+            </section>
 
-        </section>
-
-    </main>
+        </main>
 
 
     <!-- =====================================================
