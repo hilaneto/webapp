@@ -1,15 +1,5 @@
 from datetime import datetime
-
-from peewee import (
-    Model,
-    AutoField,
-    CharField,
-    DecimalField,
-    DateTimeField,
-    BooleanField,
-    ForeignKeyField
-)
-
+from peewee import Model, AutoField, CharField, DecimalField, DateTimeField, BooleanField, ForeignKeyField
 from database.conexao import db, conectar
 
 
@@ -28,29 +18,11 @@ class Capital(Model):
 
 class Temperatura(Model):
     cd_temperatura = AutoField()
-
-    capital = ForeignKeyField(
-        Capital,
-        field=Capital.cd_capital,
-        column_name="cd_capital",
-        backref="temperaturas"
-    )
-
-    temperatura = DecimalField(
-        max_digits=5,
-        decimal_places=2,
-        null=True
-    )
-
+    capital = ForeignKeyField(Capital, field=Capital.cd_capital, column_name="cd_capital", backref="temperaturas")
+    temperatura = DecimalField(max_digits=5, decimal_places=2, null=True)
     dt_referencia = DateTimeField()
-
-    dt_atualizacao = DateTimeField(
-        default=datetime.now
-    )
-
-    status = BooleanField(
-        default=True
-    )
+    dt_atualizacao = DateTimeField(default=datetime.now)
+    status = BooleanField(default=True)
 
     class Meta:
         database = db
@@ -58,21 +30,7 @@ class Temperatura(Model):
 
     @classmethod
     def atuais(cls):
-
         with conectar():
-
-            dados = list(
-                cls
-                .select(
-                    cls,
-                    Capital
-                )
-                .join(Capital)
-                .distinct(Capital.cd_capital)
-                .order_by(
-                    Capital.cd_capital,
-                    cls.dt_referencia.desc()
-                )
-            )
+            dados = list(cls.select(cls,Capital).join(Capital).distinct(Capital.cd_capital).order_by(Capital.cidade,cls.dt_referencia.desc()))
 
         return dados
