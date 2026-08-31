@@ -55,8 +55,8 @@ def home():
 
     for registro in dados_temperatura:
         temperaturas.append({
-            "regiao": registro.regiao,
-            "cidade": registro.cidade,
+            "regiao": registro.capital.regiao,
+            "cidade": registro.capital.cidade,
             "temperatura": (
                 f"{float(registro.temperatura):.1f}°C".replace(".", ",")
                 if registro.temperatura is not None

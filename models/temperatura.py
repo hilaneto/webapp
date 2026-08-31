@@ -1,33 +1,78 @@
-from peewee import Model, AutoField, DecimalField, DateTimeField, BooleanField, CharField
 from datetime import datetime
+
+from peewee import (
+    Model,
+    AutoField,
+    CharField,
+    DecimalField,
+    DateTimeField,
+    BooleanField,
+    ForeignKeyField
+)
+
 from database.conexao import db, conectar
-from database.crud_base import CrudBase
+
+
+class Capital(Model):
+    cd_capital = AutoField()
+    cidade = CharField(max_length=50)
+    cidade_busca = CharField(max_length=50)
+    uf = CharField(max_length=2)
+    regiao = CharField(max_length=20)
+    cd_ibge = CharField(max_length=7)
+
+    class Meta:
+        database = db
+        table_name = "tb_capital"
+
 
 class Temperatura(Model):
     cd_temperatura = AutoField()
-    regiao = CharField(max_length=20)
-    cidade = CharField(max_length=50)
-    temperatura = DecimalField(max_digits=5, decimal_places=2, null=True)
-    dt_referencia = DateTimeField(null=True)
-    dt_atualizacao = DateTimeField(default=datetime.now)
-    status = BooleanField(default=True)
+
+    capital = ForeignKeyField(
+        Capital,
+        field=Capital.cd_capital,
+        column_name="cd_capital",
+        backref="temperaturas"
+    )
+
+    temperatura = DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        null=True
+    )
+
+    dt_referencia = DateTimeField()
+
+    dt_atualizacao = DateTimeField(
+        default=datetime.now
+    )
+
+    status = BooleanField(
+        default=True
+    )
 
     class Meta:
         database = db
         table_name = "tb_temperatura"
 
-    @staticmethod
-    def atuais():
+    @classmethod
+    def atuais(cls):
+
         with conectar():
-            return list(
-                Temperatura
-                .select()
-                .distinct(Temperatura.cidade)
+
+            dados = list(
+                cls
+                .select(
+                    cls,
+                    Capital
+                )
+                .join(Capital)
+                .distinct(Capital.cd_capital)
                 .order_by(
-                    Temperatura.cidade,
-                    Temperatura.dt_referencia.desc()))
+                    Capital.cd_capital,
+                    cls.dt_referencia.desc()
+                )
+            )
 
-class CrudTemperatura(CrudBase):
-
-    def __init__(self):
-        super().__init__(Temperatura)
+        return dados
