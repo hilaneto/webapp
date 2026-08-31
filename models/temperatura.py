@@ -1,5 +1,5 @@
 from datetime import datetime
-from peewee import Model, AutoField, CharField, DecimalField, DateTimeField, BooleanField, ForeignKeyField
+from peewee import Model, AutoField, CharField, DecimalField, DateTimeField, BooleanField, ForeignKeyField, IntegerField
 from database.conexao import db, conectar
 
 
@@ -17,22 +17,21 @@ class Capital(Model):
 
 
 class Temperatura(Model):
-    cd_temperatura = AutoField()
-    capital = ForeignKeyField(Capital, field=Capital.cd_capital, column_name="cd_capital", backref="temperaturas")
-    temperatura = DecimalField(max_digits=5, decimal_places=2, null=True)
+    cd_capital = IntegerField()
+    cidade = CharField()
+    uf = CharField()
+    regiao = CharField()
+    temperatura = DecimalField(null=True)
     dt_referencia = DateTimeField()
-    dt_atualizacao = DateTimeField(default=datetime.now)
-    status = BooleanField(default=True)
 
     class Meta:
         database = db
-        table_name = "tb_temperatura"
+        table_name = "vw_temperatura_atual"
+        primary_key = False
 
     @classmethod
     def atuais(cls):
         with conectar():
-            dados = list(cls.select(cls, Capital).join(Capital).distinct(Capital.cd_capital).order_by(Capital.cd_capital,cls.dt_referencia.desc()))
+            dados = list(cls.select().order_by(cls.cidade))
 
-        dados.sort(key=lambda x: x.capital.cidade)
         return dados
-

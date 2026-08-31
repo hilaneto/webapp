@@ -49,25 +49,14 @@ def home():
     dtref_salario = salario_atual.dt_referencia.strftime("%d/%m/%Y")
 
     # Temperaturas ----------------------------------------------
-    dados_temperatura = Temperatura.atuais()
-
     temperaturas = []
 
-    for registro in dados_temperatura:
+    for registro in Temperatura.atuais():
         temperaturas.append({
-            "regiao": registro.capital.regiao,
-            "cidade": registro.capital.cidade,
-            "temperatura": (
-                f"{float(registro.temperatura):.1f}°C".replace(".", ",")
-                if registro.temperatura is not None
-                else "--"
-            ),
-            "dt_referencia": (
-                registro.dt_referencia.strftime("%d/%m/%Y %H:%M")
-                if registro.dt_referencia
-                else "--"
-            ),
-            "status": registro.status
+            "regiao": registro.regiao,
+            "cidade": registro.cidade,
+            "temperatura": registro.temperatura,
+            "dt_referencia": registro.dt_referencia,
         })
 
     return render_template(
