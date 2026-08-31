@@ -31,6 +31,8 @@ class Temperatura(Model):
     @classmethod
     def atuais(cls):
         with conectar():
-            dados = list(cls.select(cls,Capital).join(Capital).distinct(Capital.cd_capital).order_by(Capital.cidade,cls.dt_referencia.desc()))
+            dados = list(cls.select(cls, Capital).join(Capital).distinct(Capital.cd_capital).order_by(Capital.cd_capital,cls.dt_referencia.desc()))
 
+        dados.sort(key=lambda x: x.capital.cidade)
         return dados
+
