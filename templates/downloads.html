@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="text-center mb-4">
+        <h3>Downloads</h3>
+        <p class="text-muted">Arquivos disponíveis para download</p>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            {% if arquivos %}
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead>
+                        <tr>
+                            <th>Arquivo</th>
+                            <th>Tamanho</th>
+                            <th>Atualização</th>
+                            <th class="text-center">Download</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for arquivo in arquivos %}
+                        <tr>
+                            <td>{{ arquivo.nome }}</td>
+
+                            <td>
+                                {{ "%.2f"|format(arquivo.tamanho / 1024 / 1024) }} MB
+                            </td>
+
+                            <td>
+                                {{ arquivo.data }}
+                            </td>
+
+                            <td class="text-center">
+                                <a href="/publico/instalacao/{{ arquivo.nome }}"
+                                   class="btn btn-sm btn-outline-secondary"
+                                   download>
+                                    Download
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+            </div>
+
+            {% else %}
+
+            <div class="text-center text-muted">
+                Nenhum arquivo disponível.
+            </div>
+
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
