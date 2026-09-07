@@ -1,25 +1,47 @@
-
-from peewee import Model, AutoField, CharField, IntegerField, BooleanField, DateTimeField
-from datetime import datetime
-from database.conexao import db
-from database.crud_base import CrudBase
+from peewee import *
+from werkzeug.security import generate_password_hash, check_password_hash
+from database.conexao import db, conectar
 
 class Usuario(Model):
-    cd_usuario = AutoField()
-    nm_usuario = CharField(max_length=45)
-    login = CharField(max_length=30, unique=True)
-    senha = CharField(max_length=60)
-    cpf = CharField(max_length=11, unique=True)
-    cd_permissao = IntegerField()
-    email = CharField(max_length=50, null=True)
-    fl_ativo = BooleanField(default=True)
-    dt_atualizacao = DateTimeField(default=datetime.now, null=False)
+    cd_usuario = BigAutoField()
+    login = CharField(max_length=100, unique=True)
+    senha_hash = TextField()
+    ativo = BooleanField(default=True)
+    dt_cadastro = DateTimeField(null=True)
+    dt_atualizacao = DateTimeField(null=True)
+    dt_ultimo_acesso = DateTimeField(null=True)
 
     class Meta:
         database = db
         table_name = "tb_usuario"
 
-class CrudUsuario(CrudBase):
-    def __init__(self):
-        super().__init__(Usuario)
-        
+    @staticmethod
+    def normalizar_login(login):
+        return login.strip().lower()
+
+    @classmethod
+    def criar(cls, login, senha):
+        login = cls.normalizar_login(login)
+        senha_hash = generate_password_hash(senha)
+
+        with conectar():
+            return cls.create(login=login, senha_hash=senha_hash)
+
+    @classmethod
+    def buscar(cls, login):
+        login = cls.normalizar_login(login)
+
+        with conectar():
+            return cls.get_or_none(cls.login == login)
+
+    @classmethod
+    def autenticar(cls, login, senha):
+        login = cls.normalizar_login(login)
+
+        with conectar():
+            usuario = cls.get_or_none((cls.login == login) & (cls.ativo == True))
+
+            if usuario and check_password_hash(usuario.senha_hash, senha):
+                return usuario
+
+            return None

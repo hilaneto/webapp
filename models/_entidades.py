@@ -1,5 +1,5 @@
 
-from peewee import (Model, AutoField, CharField, IntegerField, BooleanField, DateTimeField, DateField)
+from peewee import Model, AutoField, CharField, IntegerField, BooleanField, DateTimeField, DateField
 from datetime import datetime, date
 from database.conexao import db
 from database.crud_base import CrudBase

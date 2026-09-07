@@ -1,10 +1,12 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, send_from_directory, session, redirect, url_for
 from models.moeda import Moeda
 from models.ipca import Ipca
 from models.selic import Selic
 from models.salario import Salario
 from models.temperatura import Temperatura
 from models.download import Download
+from datetime import datetime
+import calendar
 
 home_bp = Blueprint('home', __name__)
 
@@ -60,6 +62,10 @@ def home():
             "dt_referencia": registro.dt_referencia,
         })
 
+    dt_atual  = datetime.now()
+    mes_atual = f"{meses[dt_atual.month - 1]} {dt_atual.year}"
+    calendario = calendar.Calendar(firstweekday=6).monthdayscalendar(dt_atual.year, dt_atual.month)
+
     return render_template(
         "home.html",
         vl_dolar=vl_dolar,
@@ -74,10 +80,24 @@ def home():
         dtref_selic=dtref_selic,
         vl_salario=vl_salario,
         dtref_salario=dtref_salario,
-        temperaturas=temperaturas
+        temperaturas=temperaturas,
+        dt_atual = dt_atual,
+        mes_atual = mes_atual,
+        calendario = calendario
     )
 
 @home_bp.route("/downloads")
 def downloads():
     arquivos = Download.listar()
     return render_template("downloads.html", arquivos=arquivos)
+
+@home_bp.route("/baixar/<path:nome>")
+def baixar(nome):
+    return send_from_directory(Download.PASTA, nome, as_attachment=True)
+
+@home_bp.route("/menu")
+def menu():
+    if "usuario_id" not in session:
+        return redirect(url_for("home.home"))
+
+    return render_template("menu.html")

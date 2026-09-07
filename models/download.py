@@ -2,12 +2,11 @@ from pathlib import Path
 from datetime import datetime
 
 class Download:
-    PASTA = Path("/var/www/html/publico/instalacao")
+    PASTA = Path(__file__).resolve().parent.parent / "downloads"
 
     @classmethod
     def listar(cls):
         arquivos = []
-
         for arquivo in sorted(cls.PASTA.iterdir()):
             if arquivo.is_file():
                 arquivos.append({

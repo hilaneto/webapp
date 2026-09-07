@@ -1,7 +1,5 @@
-from datetime import datetime
-from peewee import Model, AutoField, CharField, DecimalField, DateTimeField, BooleanField, ForeignKeyField, IntegerField
+from peewee import Model, AutoField, CharField, DecimalField, DateTimeField, IntegerField
 from database.conexao import db, conectar
-
 
 class Capital(Model):
     cd_capital = AutoField()
@@ -14,7 +12,6 @@ class Capital(Model):
     class Meta:
         database = db
         table_name = "tb_capital"
-
 
 class Temperatura(Model):
     cd_capital = IntegerField()
