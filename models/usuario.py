@@ -23,25 +23,20 @@ class Usuario(Model):
     def criar(cls, login, senha):
         login = cls.normalizar_login(login)
         senha_hash = generate_password_hash(senha)
-
         with conectar():
             return cls.create(login=login, senha_hash=senha_hash)
 
     @classmethod
     def buscar(cls, login):
         login = cls.normalizar_login(login)
-
         with conectar():
             return cls.get_or_none(cls.login == login)
 
     @classmethod
     def autenticar(cls, login, senha):
         login = cls.normalizar_login(login)
-
         with conectar():
             usuario = cls.get_or_none((cls.login == login) & (cls.ativo == True))
-
             if usuario and check_password_hash(usuario.senha_hash, senha):
                 return usuario
-
             return None
