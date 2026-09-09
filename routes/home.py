@@ -4,7 +4,7 @@ from models.ipca import Ipca
 from models.selic import Selic
 from models.salario import Salario
 from models.temperatura import Temperatura
-from models.download import Download
+from suporte.download import Download
 from datetime import datetime
 import calendar
 
@@ -88,12 +88,22 @@ def home():
 
 @home_bp.route("/downloads")
 def downloads():
-    arquivos = Download.listar()
+    if "usuario_id" not in session:
+        return redirect(url_for("home.home"))
+    download = Download(session["usuario_id"])
+    arquivos = download.listar()
     return render_template("downloads.html", arquivos=arquivos)
 
 @home_bp.route("/baixar/<path:nome>")
 def baixar(nome):
-    return send_from_directory(Download.PASTA, nome, as_attachment=True)
+    if "usuario_id" not in session:
+        return redirect(url_for("home.home"))
+    download = Download(session["usuario_id"])
+    caminho = download.caminho(nome)
+
+    if caminho is None:
+        return "Arquivo não encontrado.", 404
+    return send_from_directory(caminho.parent, caminho.name, as_attachment=True, download_name=nome)
 
 @home_bp.route("/menu")
 def menu():

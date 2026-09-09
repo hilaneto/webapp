@@ -1,21 +1,25 @@
-from flask import Blueprint, request, redirect, url_for, session
-from models.usuario import Usuario
+from flask import Blueprint, request, session, redirect, url_for, flash
 
 auth_bp = Blueprint("auth", __name__)
 
 @auth_bp.route("/login", methods=["POST"])
 def login():
-    login = request.form.get("usuario", "")
-    senha = request.form.get("senha", "")
 
-    usuario = Usuario.autenticar(login, senha)
-
-    if usuario:
-        session["usuario_id"] = usuario.cd_usuario
-        session["usuario_login"] = usuario.login
-        return redirect(url_for("home.menu"))
-
-    return "Login não encontrado"
+    usuario = request.form.get("usuario")
+    senha = request.form.get("senha")
+    # ---------------------------------------------------------
+    # SUA CONSULTA/VALIDAÇÃO REAL DO USUÁRIO
+    # ---------------------------------------------------------
+    # Exemplo:
+    # usuario_db = Usuario.autenticar(usuario, senha)
+    #
+    # if not usuario_db:
+    #     flash("Usuário ou senha inválidos.")
+    #     return redirect(url_for("home.home"))
+    # session["usuario_id"] = usuario_db.cd_usuario
+    # session["usuario_login"] = usuario_db.login
+    # ---------------------------------------------------------
+    return redirect(url_for("home.menu"))
 
 @auth_bp.route("/logout")
 def logout():

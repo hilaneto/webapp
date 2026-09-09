@@ -1,19 +1,27 @@
-from flask import Flask
-
+from flask import Flask, render_template
 from routes.cpf import cpf_bp
 from routes.cnpj import cnpj_bp
 from routes.home import home_bp
 from routes.auth import auth_bp
+from routes.upload import upload_bp
+from datetime import datetime
 
 app = Flask(__name__)
 
-app.secret_key = '1553'
+app.secret_key = "1553"
 
-app.register_blueprint( home_bp, url_prefix='/' )
-app.register_blueprint( cpf_bp, url_prefix='/cpf' )
-app.register_blueprint( cnpj_bp, url_prefix='/cnpj' )
+app.config["MAX_CONTENT_LENGTH"] = 50 * 1024 * 1024
+
+app.register_blueprint(home_bp)
+app.register_blueprint(cpf_bp, url_prefix="/cpf")
+app.register_blueprint(cnpj_bp, url_prefix="/cnpj")
 app.register_blueprint(auth_bp)
+app.register_blueprint(upload_bp)
 
-if __name__ == '__main__':
+@app.route("/")
+def index():
+    dt_atual = datetime.now()
+    return render_template("home.html", dt_atual=dt_atual)
+
+if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5153, debug=True, use_reloader=False)
-
