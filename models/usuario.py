@@ -27,10 +27,15 @@ class Usuario(Model):
             return cls.create(login=login, senha_hash=senha_hash)
 
     @classmethod
-    def buscar(cls, login):
+    def buscar_login(cls, login):
         login = cls.normalizar_login(login)
         with conectar():
             return cls.get_or_none(cls.login == login)
+
+    @classmethod
+    def buscar_cdusuario(cls, cd_usuario):
+        with conectar():
+            return (Usuario.select().where(Usuario.cd_usuario == cd_usuario).order_by(Usuario.dt_atualizacao.desc()).first())
 
     @classmethod
     def autenticar(cls, login, senha):
