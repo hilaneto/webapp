@@ -105,9 +105,9 @@ def baixar(nome):
         return "Arquivo não encontrado.", 404
     return send_from_directory(caminho.parent, caminho.name, as_attachment=True, download_name=nome)
 
-@home_bp.route("/menu")
-def menu():
+@home_bp.route("/sistema")
+def sistema():
     if "usuario_id" not in session:
         return redirect(url_for("home.home"))
 
-    return render_template("menu.html")
+    return render_template("sistema.html")

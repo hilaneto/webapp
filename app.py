@@ -5,6 +5,7 @@ from routes.upload import upload_bp
 from routes.api_cpf import cpf_bp
 from routes.api_cnpj import cnpj_bp
 from routes.api_usuario import api_usuario_bp
+from routes.contato import contato_bp
 from datetime import datetime
 
 app = Flask(__name__)
@@ -19,6 +20,7 @@ app.register_blueprint(upload_bp)
 app.register_blueprint(cpf_bp, url_prefix="/cpf")
 app.register_blueprint(cnpj_bp, url_prefix="/cnpj")
 app.register_blueprint(api_usuario_bp, url_prefix="/cdusuario")
+app.register_blueprint(contato_bp)
 
 @app.route("/")
 def index():
