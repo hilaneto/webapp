@@ -7,7 +7,7 @@ class Moeda(Model):
     cd_moeda = AutoField()
     valor = DecimalField(max_digits=18, decimal_places=5)
     status = BooleanField(default=True, null=False)
-    moeda = CharField(max_length=3, null=False)
+    moeda = CharField(max_length=4, null=False)
     dt_referencia = DateTimeField(null=False)
     dt_atualizacao = DateTimeField(default=datetime.now, null=False)
 
@@ -23,8 +23,8 @@ class Moeda(Model):
     @staticmethod
     def select_dolar_atual():
         with conectar() as db:
-            dolar = db.execute_sql("""SELECT * FROM tb_moeda WHERE status = true AND moeda = 'USD' ORDER BY dt_referencia DESC LIMIT 1;""").fetchone()
-            return dolar
+            dolares = db.execute_sql("""SELECT DISTINCT ON (moeda) * FROM tb_moeda WHERE status = true AND moeda IN ('USDC', 'USDV') ORDER BY moeda, dt_referencia DESC;""").fetchall()
+            return dolares
 
 class CrudMoeda(CrudBase):
     def __init__(self):

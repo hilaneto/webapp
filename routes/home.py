@@ -17,15 +17,20 @@ def formatar_real(valor):
 def home():
 
     # Moedas ----------------------------------------------------
-    dolar_atual = Moeda.atual("USD")
+    dolar_compra = Moeda.atual("USDC")
+    dolar_venda = Moeda.atual("USDV")
     euro_atual = Moeda.atual("EUR")
     bitcoin_atual = Moeda.atual("BTC")
 
-    vl_dolar = formatar_real(float(dolar_atual.valor))
+    vl_dolar_compra = formatar_real(float(dolar_compra.valor))
+    vl_dolar_venda = formatar_real(float(dolar_venda.valor))
+
     vl_euro = formatar_real(float(euro_atual.valor))
     vl_bitcoin = formatar_real(float(bitcoin_atual.valor))
 
-    dtref_dolar = dolar_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
+    dtref_dolar_compra = dolar_compra.dt_referencia.strftime("%d/%m/%Y %H:%M")
+    dtref_dolar_venda = dolar_venda.dt_referencia.strftime("%d/%m/%Y %H:%M")
+
     dtref_euro = euro_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
     dtref_bitcoin = bitcoin_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
 
@@ -68,8 +73,10 @@ def home():
 
     return render_template(
         "home.html",
-        vl_dolar=vl_dolar,
-        dtref_dolar=dtref_dolar,
+        vl_dolar_compra =vl_dolar_compra,
+        dtref_dolar_compra=dtref_dolar_compra,
+        vl_dolar_venda=vl_dolar_venda,
+        dtref_dolar_venda=dtref_dolar_venda,
         vl_euro=vl_euro,
         dtref_euro=dtref_euro,
         vl_bitcoin=vl_bitcoin,
