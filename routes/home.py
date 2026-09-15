@@ -4,6 +4,7 @@ from models.ipca import Ipca
 from models.selic import Selic
 from models.salario import Salario
 from models.temperatura import Temperatura
+from models.ibovespa import Ibovespa
 from suporte.download import Download
 from datetime import datetime
 import calendar
@@ -73,6 +74,13 @@ def home():
     mes_atual = f"{meses[dt_atual.month - 1]} {dt_atual.year}"
     calendario = calendar.Calendar(firstweekday=6).monthdayscalendar(dt_atual.year, dt_atual.month)
 
+    # Ibovespa ----------------------------------------------
+    ibovespa_atual = Ibovespa.atual()
+    vl_ibovespa = f"{float(ibovespa_atual.pontos):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+    vl_ibovespa_variacao = f"{float(ibovespa_atual.variacao):,.2f}%".replace(",", "X").replace(".", ",").replace("X", ".")
+    dtref_ibovespa = ibovespa_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
+
+
     return render_template(
         "home.html",
         vl_dolar_compra =vl_dolar_compra,
@@ -92,7 +100,10 @@ def home():
         temperaturas=temperaturas,
         dt_atual = dt_atual,
         mes_atual = mes_atual,
-        calendario = calendario
+        calendario = calendario,
+        vl_ibovespa=vl_ibovespa,
+        vl_ibovespa_variacao=vl_ibovespa_variacao,
+        dtref_ibovespa=dtref_ibovespa,
     )
 
 @home_bp.route("/downloads")
