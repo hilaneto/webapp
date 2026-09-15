@@ -76,7 +76,7 @@ def home():
 
     # Ibovespa ----------------------------------------------
     ibovespa_atual = Ibovespa.atual()
-    vl_ibovespa = f"{float(ibovespa_atual.pontos):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+    vl_ibovespa = f"{float(ibovespa_atual.pontos):,.0f}".replace(",", "X").replace(".", ",").replace("X", ".")
     vl_ibovespa_variacao = f"{float(ibovespa_atual.variacao):,.2f}%".replace(",", "X").replace(".", ",").replace("X", ".")
     dtref_ibovespa = ibovespa_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
 
