@@ -13,6 +13,9 @@ home_bp = Blueprint('home', __name__)
 def formatar_real(valor):
     return f"R$ {valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
+def formatar_real_4casas(valor):
+    return f"R$ {valor:,.4f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
 @home_bp.route("/")
 def home():
 
@@ -22,10 +25,9 @@ def home():
     euro_atual = Moeda.atual("EUR")
     bitcoin_atual = Moeda.atual("BTC")
 
-    vl_dolar_compra = formatar_real(float(dolar_compra.valor))
-    vl_dolar_venda = formatar_real(float(dolar_venda.valor))
-
-    vl_euro = formatar_real(float(euro_atual.valor))
+    vl_dolar_compra = formatar_real_4casas(float(dolar_compra.valor))
+    vl_dolar_venda = formatar_real_4casas(float(dolar_venda.valor))
+    vl_euro = formatar_real_4casas(float(euro_atual.valor))
     vl_bitcoin = formatar_real(float(bitcoin_atual.valor))
 
     dtref_dolar_compra = dolar_compra.dt_referencia.strftime("%d/%m/%Y %H:%M")
