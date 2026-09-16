@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 
     <title>WebApp</title>
 
@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
 
     <!-- =====================================================
          MENU SUPERIOR
@@ -36,11 +37,12 @@
 
             <div class="collapse navbar-collapse" id="menuPrincipal">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"> <a class="nav-link" href="{{ url_for('home.home') }}">       Início  </a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url_for('home.home') }}"> Início </a> </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ url_for('contato.contato') }}"> Contato </a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ url_for('auth.logar') }}">      Logar   </a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url_for('auth.logar') }}"> Logar </a> </li>
                 </ul>
             </div>
+
         </div>
     </nav>
 
@@ -52,19 +54,20 @@
 
 
         <!-- =====================================================
-            CABEÇALHO
+             CABEÇALHO
         ====================================================== -->
-        <header class="text-center mb-5">
-            <h1 style="color: #ffffff;">WebApp</h1>
-            <p class="lead mb-1" style="color: #ffffff;">Bem-vindo ao WebApp - Informações e Indicadores</p>
-            <p class="small mt-1 mb-0" style="color: #e0e0e0;">Indicadores atualizados a cada 30 minutos</p>
-            <p class="small mt-1 mb-0" style="color: #e0e0e0;">{{ dt_atual.strftime("%d/%m/%Y %H:%M") }}</p>
-        </header>        
+        <header class="webapp-header text-center mb-5">
+            <h1>WebApp</h1>
+            <p class="lead mb-1">Bem-vindo ao WebApp - Informações e Indicadores</p>
+            <p class="small mt-1 mb-0">Indicadores atualizados a cada 30 minutos</p>
+            <p class="small mt-1 mb-0">{{ dt_atual.strftime("%d/%m/%Y %H:%M") }}</p>
+        </header>
+
 
         <!-- =====================================================
              CÂMBIO
         ====================================================== -->
-        <section class="p-3 mb-4 rounded" style="background-color: #f5f5f5;">
+        <section class="grupo-indicadores p-3 mb-4 rounded">
 
             <div class="text-center fw-bold mb-3"> Câmbio </div>
 
@@ -75,6 +78,7 @@
                     <div class="card text-center shadow-sm h-100">
                         <div class="card-body py-2 px-3">
                             <h5 class="mb-2">Dólar</h5>
+
                             <div class="row">
                                 <div class="col-6 border-end">
                                     <div class="small text-muted">Compra</div>
@@ -92,6 +96,7 @@
                     </div>
                 </div>
 
+
                 <!-- Euro -->
                 <div class="col-12 col-md-6 col-lg-2">
                     <div class="card text-center shadow-sm h-100">
@@ -102,6 +107,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Bitcoin -->
                 <div class="col-12 col-md-6 col-lg-2">
@@ -122,9 +128,10 @@
         <!-- =====================================================
              INDICADORES
         ====================================================== -->
-        <section class="p-3 mb-4 rounded" style="background-color: #eeeeee;">
+        <section class="grupo-indicadores p-3 mb-4 rounded">
 
             <div class="text-center fw-bold mb-3"> Indicadores </div>
+
             <div class="row g-3 justify-content-center">
 
                 <!-- Ibovespa -->
@@ -139,6 +146,7 @@
                     </div>
                 </div>
 
+
                 <!-- IPCA -->
                 <div class="col-12 col-md-6 col-lg-2">
                     <div class="card text-center shadow-sm h-100">
@@ -150,6 +158,7 @@
                     </div>
                 </div>
 
+
                 <!-- Selic -->
                 <div class="col-12 col-md-6 col-lg-2">
                     <div class="card text-center shadow-sm h-100">
@@ -160,6 +169,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Salário Mínimo -->
                 <div class="col-12 col-md-6 col-lg-2">
@@ -181,11 +191,14 @@
              TEMPERATURA E CALENDÁRIO
         ====================================================== -->
         <section class="row g-2 mb-3 justify-content-center">
+
             <!-- Temperatura -->
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="card shadow-sm h-100">
                     <div class="card-body py-2 px-3">
+
                         <div class="text-center mb-2 fw-bold"> Temperatura nas Capitais </div>
+
                         <div style="max-height: 220px; overflow-y: auto;">
                             {% for item in temperaturas %}
                             <div class="d-flex justify-content-between align-items-center py-0 border-bottom" style="font-size: 0.80rem;">
@@ -194,17 +207,21 @@
                             </div>
                             {% endfor %}
                         </div>
+
                     </div>
                 </div>
             </div>
+
 
             <!-- Calendário -->
             <div class="col-12 col-md-6 col-lg-2">
                 <div class="card shadow-sm h-100">
                     <div class="card-body py-1 px-3">
+
                         <div class="text-center mb-1 fw-bold"> {{ mes_atual }} </div>
+
                         <div class="mx-auto" style="max-width: 180px;">
-                            <table class="table table-sm table-borderless text-center mb-0 calendario" style="font-size: 0.99rem;" >
+                            <table class="table table-sm table-borderless text-center mb-0 calendario" style="font-size: 0.99rem;">
                                 <thead>
                                     <tr class="text-muted">
                                         <th>D</th>
@@ -216,7 +233,9 @@
                                         <th>S</th>
                                     </tr>
                                 </thead>
-                                <tbody> {% for semana in calendario %}
+
+                                <tbody>
+                                    {% for semana in calendario %}
                                     <tr>
                                         {% for dia in semana %}
                                             {% if dia == 0 %}
@@ -230,17 +249,21 @@
                                 </tbody>
                             </table>
                         </div>
+
                     </div>
                 </div>
             </div>
 
         </section>
 
+
         <!-- =====================================================
-            FONTES DOS DADOS
+             FONTES DOS DADOS
         ====================================================== -->
         <section class="mt-4">
+
             <div class="text-center small fw-bold mb-1">Fontes dos Dados</div>
+
             <div class="table-responsive mx-auto" style="max-width: 650px;">
                 <table class="table table-sm table-striped mb-0" style="font-size: 0.72rem;">
 
@@ -256,49 +279,67 @@
                         <tr>
                             <td class="py-1">Dólar</td>
                             <td class="py-1">AwesomeAPI</td>
-                            <td class="py-1"><a href="https://economia.awesomeapi.com.br/json/last/USD-BRL" target="_blank">USD-BRL</a></td>
+                            <td class="py-1">
+                                <a href="https://economia.awesomeapi.com.br/json/last/USD-BRL" target="_blank">USD-BRL</a>
+                            </td>
                         </tr>
 
                         <tr>
                             <td class="py-1">Euro</td>
                             <td class="py-1">AwesomeAPI</td>
-                            <td class="py-1"><a href="https://economia.awesomeapi.com.br/json/last/EUR-BRL" target="_blank">EUR-BRL</a></td>
+                            <td class="py-1">
+                                <a href="https://economia.awesomeapi.com.br/json/last/EUR-BRL" target="_blank">EUR-BRL</a>
+                            </td>
                         </tr>
 
                         <tr>
                             <td class="py-1">Bitcoin</td>
                             <td class="py-1">AwesomeAPI</td>
-                            <td class="py-1"><a href="https://economia.awesomeapi.com.br/json/last/BTC-BRL" target="_blank">BTC-BRL</a></td>
+                            <td class="py-1">
+                                <a href="https://economia.awesomeapi.com.br/json/last/BTC-BRL" target="_blank">BTC-BRL</a>
+                            </td>
                         </tr>
 
                         <tr>
                             <td class="py-1">IPCA</td>
                             <td class="py-1">Banco Central</td>
-                            <td class="py-1"><a href="https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados" target="_blank">SGS 433</a></td>
+                            <td class="py-1">
+                                <a href="https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados" target="_blank">SGS 433</a>
+                            </td>
                         </tr>
 
                         <tr>
                             <td class="py-1">SELIC</td>
                             <td class="py-1">Banco Central</td>
-                            <td class="py-1"><a href="https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados" target="_blank">SGS 432</a></td>
+                            <td class="py-1">
+                                <a href="https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados" target="_blank">SGS 432</a>
+                            </td>
                         </tr>
 
                         <tr>
                             <td class="py-1">Salário mínimo</td>
                             <td class="py-1">Banco Central</td>
-                            <td class="py-1"><a href="https://api.bcb.gov.br/dados/serie/bcdata.sgs.1619/dados" target="_blank">SGS 1619</a></td>
+                            <td class="py-1">
+                                <a href="https://api.bcb.gov.br/dados/serie/bcdata.sgs.1619/dados" target="_blank">SGS 1619</a>
+                            </td>
                         </tr>
 
                         <tr>
                             <td class="py-1">Temperatura</td>
                             <td class="py-1">INMET</td>
-                            <td class="py-1"><a href="https://wis2bra.inmet.gov.br/oapi/collections/urn:wmo:md:br-inmet:synop/items" target="_blank">WIS2 / SYNOP</a></td>
+                            <td class="py-1">
+                                <a href="https://wis2bra.inmet.gov.br/oapi/collections/urn:wmo:md:br-inmet:synop/items" target="_blank">WIS2 / SYNOP</a>
+                            </td>
                         </tr>
                     </tbody>
 
                 </table>
             </div>
+
         </section>
+
+    </main>
+
 
     <!-- =====================================================
          BOOTSTRAP JAVASCRIPT
