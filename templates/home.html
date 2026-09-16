@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 
     <title>WebApp</title>
 
@@ -49,17 +50,16 @@
     ====================================================== -->
     <main class="container py-5">
 
+
         <!-- =====================================================
-             CABEÇALHO
+            CABEÇALHO
         ====================================================== -->
         <header class="text-center mb-5">
-            <header class="text-center mb-5">
-                <h1>WebApp</h1>
-                <p class="lead mb-1">Bem-vindo ao WebApp - Informações e Indicadores</p>
-                <p class="small mt-1 mb-0" style="color: #e0e0e0;">Indicadores atualizados a cada 30 minutos</p>
-                <p class="small mt-1 mb-0" style="color: #e0e0e0;">{{ dt_atual.strftime("%d/%m/%Y %H:%M") }}</p>
-            </header>
-        </header>
+            <h1 style="color: #ffffff;">WebApp</h1>
+            <p class="lead mb-1" style="color: #ffffff;">Bem-vindo ao WebApp - Informações e Indicadores</p>
+            <p class="small mt-1 mb-0" style="color: #e0e0e0;">Indicadores atualizados a cada 30 minutos</p>
+            <p class="small mt-1 mb-0" style="color: #e0e0e0;">{{ dt_atual.strftime("%d/%m/%Y %H:%M") }}</p>
+        </header>        
 
         <!-- =====================================================
              CÂMBIO
