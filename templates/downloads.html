@@ -42,7 +42,7 @@
                             <td>{{ "%.2f"|format(arquivo.tamanho / 1024 / 1024) }} MB</td>
                             <td>{{ arquivo.data }}</td>
                             <td class="text-center">
-                                <a href="{{ url_for('home.downloads', nome=arquivo.nome) }}" class="btn btn-sm btn-outline-secondary">Download</a>
+                                <a href="{{ url_for('download.downloads', nome=arquivo.nome) }}" class="btn btn-sm btn-outline-secondary">Download</a>
                             </td>
                         </tr>
                         {% endfor %}
