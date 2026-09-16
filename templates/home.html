@@ -19,9 +19,7 @@
     <nav class="navbar navbar-expand-md bg-light border-bottom shadow-sm">
         <div class="container">
 
-            <a class="navbar-brand fw-bold" href="{{ url_for('home.home') }}">
-                WebApp
-            </a>
+            <a class="navbar-brand fw-bold" href="{{ url_for('home.home') }}"> WebApp </a>
 
             <button
                 class="navbar-toggler"
@@ -36,31 +34,12 @@
             </button>
 
             <div class="collapse navbar-collapse" id="menuPrincipal">
-
                 <ul class="navbar-nav ms-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('home.home') }}">
-                            Início
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('contato.contato') }}">
-                            Contato
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('auth.logar') }}">
-                            Logar
-                        </a>
-                    </li>
-
+                    <li class="nav-item"> <a class="nav-link" href="{{ url_for('home.home') }}">       Início  </a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url_for('contato.contato') }}"> Contato </a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url_for('auth.logar') }}">      Logar   </a> </li>
                 </ul>
-
             </div>
-
         </div>
     </nav>
 
@@ -87,9 +66,7 @@
         ====================================================== -->
         <section class="p-3 mb-4 rounded" style="background-color: #f5f5f5;">
 
-            <div class="text-center fw-bold mb-3">
-                Câmbio
-            </div>
+            <div class="text-center fw-bold mb-3"> Câmbio </div>
 
             <div class="row g-3 justify-content-center">
 
@@ -150,7 +127,6 @@
             <div class="text-center fw-bold mb-3"> Indicadores </div>
             <div class="row g-3 justify-content-center">
 
-
                 <!-- Ibovespa -->
                 <div class="col-12 col-md-6 col-lg-2">
                     <div class="card text-center shadow-sm h-100">
@@ -185,7 +161,6 @@
                     </div>
                 </div>
 
-
                 <!-- Salário Mínimo -->
                 <div class="col-12 col-md-6 col-lg-2">
                     <div class="card text-center shadow-sm h-100">
@@ -197,7 +172,6 @@
                     </div>
                 </div>
 
-
             </div>
 
         </section>
@@ -207,68 +181,31 @@
              TEMPERATURA E CALENDÁRIO
         ====================================================== -->
         <section class="row g-2 mb-3 justify-content-center">
-
             <!-- Temperatura -->
             <div class="col-12 col-md-6 col-lg-3">
-
                 <div class="card shadow-sm h-100">
-
                     <div class="card-body py-2 px-3">
-
-                        <div class="text-center mb-2 fw-bold">
-                            Temperatura nas Capitais
-                        </div>
-
+                        <div class="text-center mb-2 fw-bold"> Temperatura nas Capitais </div>
                         <div style="max-height: 220px; overflow-y: auto;">
-
                             {% for item in temperaturas %}
-
-                            <div
-                                class="d-flex justify-content-between align-items-center py-0 border-bottom"
-                                style="font-size: 0.80rem;"
-                            >
-
-                                <span>
-                                    {{ item.cidade }}
-                                </span>
-
-                                <strong>
-                                    {{ item.temperatura }}
-                                </strong>
-
+                            <div class="d-flex justify-content-between align-items-center py-0 border-bottom" style="font-size: 0.80rem;">
+                                <span> {{ item.cidade }} </span>
+                                <strong> {{ item.temperatura }} </strong>
                             </div>
-
                             {% endfor %}
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
 
             <!-- Calendário -->
             <div class="col-12 col-md-6 col-lg-2">
-
                 <div class="card shadow-sm h-100">
-
                     <div class="card-body py-1 px-3">
-
-                        <div class="text-center mb-1 fw-bold">
-                            {{ mes_atual }}
-                        </div>
-
+                        <div class="text-center mb-1 fw-bold"> {{ mes_atual }} </div>
                         <div class="mx-auto" style="max-width: 180px;">
-
-                            <table
-                                class="table table-sm table-borderless text-center mb-0 calendario"
-                                style="font-size: 0.99rem;"
-                            >
-
+                            <table class="table table-sm table-borderless text-center mb-0 calendario" style="font-size: 0.99rem;" >
                                 <thead>
-
                                     <tr class="text-muted">
                                         <th>D</th>
                                         <th>S</th>
@@ -278,45 +215,23 @@
                                         <th>S</th>
                                         <th>S</th>
                                     </tr>
-
                                 </thead>
-
-                                <tbody>
-
-                                    {% for semana in calendario %}
-
+                                <tbody> {% for semana in calendario %}
                                     <tr>
-
                                         {% for dia in semana %}
-
                                             {% if dia == 0 %}
-
                                                 <td></td>
-
                                             {% else %}
-
-                                                <td>
-                                                    {{ dia }}
-                                                </td>
-
+                                                <td> {{ dia }} </td>
                                             {% endif %}
-
                                         {% endfor %}
-
                                     </tr>
-
                                     {% endfor %}
-
                                 </tbody>
-
                             </table>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
 
         </section>
@@ -325,9 +240,7 @@
             FONTES DOS DADOS
         ====================================================== -->
         <section class="mt-4">
-
             <div class="text-center small fw-bold mb-1">Fontes dos Dados</div>
-
             <div class="table-responsive mx-auto" style="max-width: 650px;">
                 <table class="table table-sm table-striped mb-0" style="font-size: 0.72rem;">
 
@@ -385,9 +298,7 @@
 
                 </table>
             </div>
-
         </section>
-
 
     <!-- =====================================================
          BOOTSTRAP JAVASCRIPT

@@ -104,6 +104,8 @@ def home():
         dtref_ibovespa=dtref_ibovespa,
     )
 
+print(type(render_template))
+
 @home_bp.route("/sistema")
 def sistema():
     if "usuario_id" not in session:
