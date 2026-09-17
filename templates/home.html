@@ -178,138 +178,182 @@
         </section>
 
 
-        <!-- =====================================================
-             CALENDÁRIO E TEMPERATURA
-        ====================================================== -->
-        <section class="grupo-indicadores p-3 mb-4 rounded">
+<!-- =====================================================
+     CALENDÁRIO
+====================================================== -->
+<section class="grupo-indicadores p-3 mb-4 rounded">
 
-            <!-- =================================================
-                 CALENDÁRIO
-            ================================================== -->
-            <div class="card shadow-sm mb-3 mx-auto" style="max-width: 700px;">
-                <div class="card-body py-2 px-3">
-                    <div class="text-center mb-2 fw-bold"> Calendário </div>
-                    <div class="d-flex align-items-center justify-content-center gap-3">
+    <div class="card shadow-sm mx-auto" style="max-width: 700px;">
+        <div class="card-body py-2 px-3">
 
-                        <!-- Mês Anterior -->
-                        <div style="width: 27%;">
-                            <div class="text-center small fw-bold mb-1"> {{ mes_anterior }} </div>
-                            <table class="table table-sm table-borderless text-center mb-0 calendario"
-                                   style="font-size: 0.72rem;">
-                                <thead>
-                                    <tr class="text-muted">
-                                        <th>D</th>
-                                        <th>S</th>
-                                        <th>T</th>
-                                        <th>Q</th>
-                                        <th>Q</th>
-                                        <th>S</th>
-                                        <th>S</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for semana in calendario_proximo %}
-                                    <tr>
-                                        {% for dia in semana %}
-                                            {% if dia == 0 %}
-                                                <td></td>
-                                            {% else %}
-                                                <td>{{ dia }}</td>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Mês atual -->
-                        <div style="width: 40%;">
-                            <div class="text-center fw-bold mb-1"> {{ mes_atual }} </div>
-                            <table class="table table-sm table-borderless text-center mb-0 calendario"
-                                   style="font-size: 0.90rem;">
-                                <thead>
-                                    <tr class="text-muted">
-                                        <th>D</th>
-                                        <th>S</th>
-                                        <th>T</th>
-                                        <th>Q</th>
-                                        <th>Q</th>
-                                        <th>S</th>
-                                        <th>S</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for semana in calendario_atual %}
-                                    <tr>
-                                        {% for dia in semana %}
-                                            {% if dia == 0 %}
-                                                <td></td>
-                                            {% else %}
-                                                <td>{{ dia }}</td>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Próximo mês -->
-                        <div style="width: 27%;">
-                            <div class="text-center small fw-bold mb-1"> {{ mes_proximo }} </div>
-                            <table class="table table-sm table-borderless text-center mb-0 calendario"
-                                   style="font-size: 0.72rem;">
-                                <thead>
-                                    <tr class="text-muted">
-                                        <th>D</th>
-                                        <th>S</th>
-                                        <th>T</th>
-                                        <th>Q</th>
-                                        <th>Q</th>
-                                        <th>S</th>
-                                        <th>S</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for semana in calendario_proximo %}
-                                    <tr>
-                                        {% for dia in semana %}
-                                            {% if dia == 0 %}
-                                                <td></td>
-                                            {% else %}
-                                                <td>{{ dia }}</td>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                </div>
+            <div class="text-center mb-2 fw-bold">
+                Calendário
             </div>
 
-            <!-- =================================================
-                 TEMPERATURA
-            ================================================== -->
-            <div class="card shadow-sm mx-auto" style="max-width: 500px;">
-                <div class="card-body py-2 px-3">
-                    <div class="text-center mb-2 fw-bold"> Temperatura nas Capitais </div>
-                    <div style="max-height: 220px; overflow-y: auto;">
-                        {% for item in temperaturas %}
-                        <div class="d-flex justify-content-between align-items-center py-0 border-bottom"
-                             style="font-size: 0.80rem;">
-                            <span>{{ item.cidade }}</span>
-                            <strong>{{ item.temperatura }}</strong>
-                        </div>
-                        {% endfor %}
+            <div class="calendarios">
+
+                <!-- Mês anterior -->
+                <div class="calendario-lateral">
+
+                    <div class="text-center small fw-bold mb-1">
+                        {{ mes_anterior }}
                     </div>
+
+                    <table class="table table-sm table-borderless text-center mb-0 calendario"
+                           style="font-size: 0.72rem;">
+
+                        <thead>
+                            <tr class="text-muted">
+                                <th>D</th>
+                                <th>S</th>
+                                <th>T</th>
+                                <th>Q</th>
+                                <th>Q</th>
+                                <th>S</th>
+                                <th>S</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for semana in calendario_anterior %}
+                            <tr>
+                                {% for dia in semana %}
+                                    {% if dia == 0 %}
+                                        <td></td>
+                                    {% else %}
+                                        <td>{{ dia }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+
+                    </table>
+
                 </div>
+
+
+                <!-- Mês atual -->
+                <div class="calendario-atual">
+
+                    <div class="text-center fw-bold mb-1">
+                        {{ mes_atual }}
+                    </div>
+
+                    <table class="table table-sm table-borderless text-center mb-0 calendario"
+                           style="font-size: 0.90rem;">
+
+                        <thead>
+                            <tr class="text-muted">
+                                <th>D</th>
+                                <th>S</th>
+                                <th>T</th>
+                                <th>Q</th>
+                                <th>Q</th>
+                                <th>S</th>
+                                <th>S</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for semana in calendario_atual %}
+                            <tr>
+                                {% for dia in semana %}
+                                    {% if dia == 0 %}
+                                        <td></td>
+                                    {% else %}
+                                        <td>{{ dia }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Próximo mês -->
+                <div class="calendario-lateral">
+
+                    <div class="text-center small fw-bold mb-1">
+                        {{ mes_proximo }}
+                    </div>
+
+                    <table class="table table-sm table-borderless text-center mb-0 calendario"
+                           style="font-size: 0.72rem;">
+
+                        <thead>
+                            <tr class="text-muted">
+                                <th>D</th>
+                                <th>S</th>
+                                <th>T</th>
+                                <th>Q</th>
+                                <th>Q</th>
+                                <th>S</th>
+                                <th>S</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for semana in calendario_proximo %}
+                            <tr>
+                                {% for dia in semana %}
+                                    {% if dia == 0 %}
+                                        <td></td>
+                                    {% else %}
+                                        <td>{{ dia }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+
+                    </table>
+
+                </div>
+
             </div>
 
-        </section>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TEMPERATURA
+====================================================== -->
+<section class="grupo-indicadores p-3 mb-4 rounded">
+
+    <div class="card shadow-sm mx-auto" style="max-width: 500px;">
+        <div class="card-body py-2 px-3">
+
+            <div class="text-center mb-2 fw-bold">
+                Temperatura nas Capitais
+            </div>
+
+            <div style="max-height: 220px; overflow-y: auto;">
+
+                {% for item in temperaturas %}
+
+                <div class="d-flex justify-content-between align-items-center py-0 border-bottom"
+                     style="font-size: 0.80rem;">
+
+                    <span>{{ item.cidade }}</span>
+                    <strong>{{ item.temperatura }}</strong>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
 
         <!-- =====================================================
              FONTES DOS DADOS

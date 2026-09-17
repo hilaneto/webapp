@@ -7,9 +7,9 @@
     --webapp-text: #212529;
     --webapp-muted: #6c757d;
     --webapp-border: #d1c5b7;
-	--webapp-header: #4a4a4a;
     --webapp-header: #000000;
-	--webapp-grupo-bg: rgba(255, 255, 255, 0.10);
+    --webapp-grupo-bg: rgba(255, 255, 255, 0.10);
+	--webapp-calendario-bg: #202020;
 }
 
 
@@ -59,6 +59,55 @@ body {
 .card {
     background-color: var(--webapp-card-bg);
     border-color: var(--webapp-border);
+}
+
+
+/* =====================================================
+   CALENDÁRIO
+===================================================== */
+
+.calendarios {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.calendario-lateral {
+    width: 27%;
+}
+
+.calendario-atual {
+    width: 40%;
+}
+
+.calendario {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.calendario th,
+.calendario td {
+    background-color: var(--webapp-calendario-bg);
+}
+
+
+/* =====================================================
+   CALENDÁRIO - CELULAR
+===================================================== */
+
+@media (max-width: 576px) {
+
+    .calendarios {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .calendario-lateral,
+    .calendario-atual {
+        width: 100%;
+        max-width: 320px;
+    }
 }
 
 
