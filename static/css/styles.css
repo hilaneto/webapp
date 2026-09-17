@@ -116,10 +116,6 @@ body {
 }
 
 
-/* =====================================================
-   CALENDÁRIO - CELULAR
-===================================================== */
-
 @media (max-width: 576px) {
 
     .calendarios {
@@ -144,6 +140,20 @@ body {
     }
 
     .calendario-atual .calendario {
+        max-width: 240px;
+    }
+
+    .calendario-titulo {
+        border-top: 1px solid rgba(0, 0, 0, 0.25);
+        padding-top: 0.5rem;
+        margin: 0 auto 0.5rem;
+    }
+
+    .calendario-lateral .calendario-titulo {
+        max-width: 200px;
+    }
+
+    .calendario-atual .calendario-titulo {
         max-width: 240px;
     }
 }

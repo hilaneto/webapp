@@ -194,14 +194,9 @@
 
                 <!-- Mês anterior -->
                 <div class="calendario-lateral">
-
-                    <div class="text-center small fw-bold mb-1">
-                        {{ mes_anterior }}
-                    </div>
-
+                    <div class="calendario-titulo text-center fw-bold"> {{ mes_anterior }} </div>
                     <table class="table table-sm table-borderless text-center mb-0 calendario"
-                           style="font-size: 0.72rem;">
-
+                           style="font-size: 0.60rem;">
                         <thead>
                             <tr class="text-muted">
                                 <th>D</th>
@@ -213,7 +208,6 @@
                                 <th>S</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             {% for semana in calendario_anterior %}
                             <tr>
@@ -227,22 +221,15 @@
                             </tr>
                             {% endfor %}
                         </tbody>
-
                     </table>
-
                 </div>
 
 
                 <!-- Mês atual -->
                 <div class="calendario-atual">
-
-                    <div class="text-center fw-bold mb-1">
-                        {{ mes_atual }}
-                    </div>
-
+                    <div class="calendario-titulo text-center fw-bold"> {{ mes_atual }} </div>
                     <table class="table table-sm table-borderless text-center mb-0 calendario"
-                           style="font-size: 0.90rem;">
-
+                           style="font-size: 0.80rem;">
                         <thead>
                             <tr class="text-muted">
                                 <th>D</th>
@@ -268,22 +255,15 @@
                             </tr>
                             {% endfor %}
                         </tbody>
-
                     </table>
-
                 </div>
 
 
                 <!-- Próximo mês -->
                 <div class="calendario-lateral">
-
-                    <div class="text-center small fw-bold mb-1">
-                        {{ mes_proximo }}
-                    </div>
-
+                    <div class="calendario-titulo text-center fw-bold"> {{ mes_proximo }} </div>
                     <table class="table table-sm table-borderless text-center mb-0 calendario"
-                           style="font-size: 0.72rem;">
-
+                           style="font-size: 0.60rem;">
                         <thead>
                             <tr class="text-muted">
                                 <th>D</th>
@@ -295,7 +275,6 @@
                                 <th>S</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             {% for semana in calendario_proximo %}
                             <tr>
@@ -309,13 +288,11 @@
                             </tr>
                             {% endfor %}
                         </tbody>
-
                     </table>
-
                 </div>
 
-            </div>
 
+            </div>
         </div>
     </div>
 
