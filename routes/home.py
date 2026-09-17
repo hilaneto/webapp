@@ -69,9 +69,33 @@ def home():
             "dt_referencia": registro.dt_referencia,
         })
 
-    dt_atual  = datetime.now()
-    mes_atual = f"{meses[dt_atual.month - 1]} {dt_atual.year}"
-    calendario = calendar.Calendar(firstweekday=6).monthdayscalendar(dt_atual.year, dt_atual.month)
+
+    # Calendário -------------------------------------------------
+    dt_atual = datetime.now()
+
+    ano_atual = dt_atual.year
+    numero_mes_atual = dt_atual.month
+
+    if numero_mes_atual == 1:
+        ano_anterior, numero_mes_anterior = ano_atual - 1, 12
+    else:
+        ano_anterior, numero_mes_anterior = ano_atual, numero_mes_atual - 1
+
+    if numero_mes_atual == 12:
+        ano_proximo, numero_mes_proximo = ano_atual + 1, 1
+    else:
+        ano_proximo, numero_mes_proximo = ano_atual, numero_mes_atual + 1
+
+    cal = calendar.Calendar(firstweekday=6)
+
+    mes_anterior = f"{meses[numero_mes_anterior - 1]} {ano_anterior}"
+    mes_atual = f"{meses[numero_mes_atual - 1]} {ano_atual}"
+    mes_proximo = f"{meses[numero_mes_proximo - 1]} {ano_proximo}"
+
+    calendario_anterior = cal.monthdayscalendar(ano_anterior, numero_mes_anterior)
+    calendario_atual = cal.monthdayscalendar(ano_atual, numero_mes_atual)
+    calendario_proximo = cal.monthdayscalendar(ano_proximo, numero_mes_proximo)
+
 
     # Ibovespa ----------------------------------------------
     ibovespa_atual = Ibovespa.atual()
@@ -96,15 +120,17 @@ def home():
         vl_salario=vl_salario,
         dtref_salario=dtref_salario,
         temperaturas=temperaturas,
-        dt_atual = dt_atual,
-        mes_atual = mes_atual,
-        calendario = calendario,
         vl_ibovespa=vl_ibovespa,
         vl_ibovespa_variacao=vl_ibovespa_variacao,
         dtref_ibovespa=dtref_ibovespa,
+        dt_atual=dt_atual,
+        mes_anterior=mes_anterior,
+        mes_atual=mes_atual,
+        mes_proximo=mes_proximo,
+        calendario_anterior=calendario_anterior,
+        calendario_atual=calendario_atual,
+        calendario_proximo=calendario_proximo,
     )
-
-print(type(render_template))
 
 @home_bp.route("/sistema")
 def sistema():
