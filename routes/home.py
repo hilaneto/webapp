@@ -20,18 +20,24 @@ def formatar_real_4casas(valor):
 def home():
 
     # Moedas ----------------------------------------------------
-    dolar_compra = Moeda.atual("USDC")
-    dolar_venda = Moeda.atual("USDV")
+    dolarc_compra = Moeda.atual("USDCC")
+    dolarc_venda = Moeda.atual("USDCV")
+    dolart_compra = Moeda.atual("USDTC")
+    dolart_venda = Moeda.atual("USDTV")
     euro_atual = Moeda.atual("EUR")
     bitcoin_atual = Moeda.atual("BTC")
 
-    vl_dolar_compra = formatar_real_4casas(float(dolar_compra.valor))
-    vl_dolar_venda = formatar_real_4casas(float(dolar_venda.valor))
+    vl_dolarc_compra = formatar_real_4casas(float(dolarc_compra.valor))
+    vl_dolarc_venda = formatar_real_4casas(float(dolarc_venda.valor))
+    vl_dolart_compra = formatar_real_4casas(float(dolart_compra.valor))
+    vl_dolart_venda = formatar_real_4casas(float(dolart_venda.valor))
     vl_euro = formatar_real_4casas(float(euro_atual.valor))
     vl_bitcoin = formatar_real(float(bitcoin_atual.valor))
 
-    dtref_dolar_compra = dolar_compra.dt_referencia.strftime("%d/%m/%Y %H:%M")
-    dtref_dolar_venda = dolar_venda.dt_referencia.strftime("%d/%m/%Y %H:%M")
+    dtref_dolarc_compra = dolarc_compra.dt_referencia.strftime("%d/%m/%Y %H:%M")
+    dtref_dolarc_venda = dolarc_venda.dt_referencia.strftime("%d/%m/%Y %H:%M")
+    dtref_dolart_compra = dolart_compra.dt_referencia.strftime("%d/%m/%Y %H:%M")
+    dtref_dolart_venda = dolart_venda.dt_referencia.strftime("%d/%m/%Y %H:%M")
 
     dtref_euro = euro_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
     dtref_bitcoin = bitcoin_atual.dt_referencia.strftime("%d/%m/%Y %H:%M")
@@ -105,10 +111,14 @@ def home():
 
     return render_template(
         "home.html",
-        vl_dolar_compra =vl_dolar_compra,
-        dtref_dolar_compra=dtref_dolar_compra,
-        vl_dolar_venda=vl_dolar_venda,
-        dtref_dolar_venda=dtref_dolar_venda,
+        vl_dolarc_compra =vl_dolarc_compra,
+        dtref_dolarc_compra=dtref_dolarc_compra,
+        vl_dolarc_venda =vl_dolarc_venda,
+        dtref_dolarc_venda=dtref_dolarc_venda,
+        vl_dolart_venda=vl_dolart_venda,
+        dtref_dolart_venda=dtref_dolart_venda,
+        vl_dolart_compra=vl_dolart_compra,
+        dtref_dolart_compra=dtref_dolart_compra,
         vl_euro=vl_euro,
         dtref_euro=dtref_euro,
         vl_bitcoin=vl_bitcoin,

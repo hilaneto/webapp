@@ -159,6 +159,17 @@ body {
 }
 
 
+/* Destaque do m?s atual */
+.calendario-destaque .calendario {
+    --bs-table-color: #000000;
+    --bs-table-striped-color: #000000;
+    --bs-table-hover-color: #000000;
+    --bs-table-active-color: #000000;
+}
+
+.calendario-destaque .calendario-titulo {
+    color: #000000 !important;
+}
 
 /* =====================================================
    CALENDÁRIO - CELULAR
