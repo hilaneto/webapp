@@ -9,12 +9,12 @@
     --webapp-border: #d1c5b7;
     --webapp-header: #000000;
     --webapp-grupo-bg: rgba(255, 255, 255, 0.10);
-	--webapp-calendario-bg: #e6ded3;
+    --webapp-calendario-bg: #e6ded3;
 }
 
 
 /* =====================================================
-   P¡GINA
+   P√ÅGINA
 ===================================================== */
 
 body {
@@ -30,7 +30,7 @@ body {
 
 
 /* =====================================================
-   CABE«ALHO
+   CABE√áALHO
 ===================================================== */
 
 .webapp-header {
@@ -63,7 +63,7 @@ body {
 
 
 /* =====================================================
-   CALEND¡RIO
+   CALEND√ÅRIO
 ===================================================== */
 
 /* Card principal */
@@ -72,7 +72,7 @@ body {
     border: none;
 }
 
-/* Container dos tr?s meses */
+/* Container dos tr√™s meses */
 .calendarios {
     display: flex;
     align-items: center;
@@ -80,12 +80,12 @@ body {
     gap: 1rem;
 }
 
-/* Meses anterior e prÛximo */
+/* Meses anterior e pr√≥ximo */
 .calendario-lateral {
     width: 27%;
 }
 
-/* M?s atual */
+/* M√™s atual */
 .calendario-atual {
     width: 40%;
     padding: 0 1rem;
@@ -99,22 +99,26 @@ body {
     margin: 0 auto;
 }
 
-/* Fundo das cÈlulas */
+/* Fundo das c√©lulas */
 .calendario th,
 .calendario td {
     background-color: transparent;
 }
 
-/* Tamanho dos calend·rios laterais */
+/* Tamanho dos calend√°rios laterais */
 .calendario-lateral .calendario {
     max-width: 200px;
 }
 
-/* Tamanho do calend·rio atual */
+/* Tamanho do calend√°rio atual */
 .calendario-atual .calendario {
     max-width: 240px;
 }
 
+
+/* =====================================================
+   CALEND√ÅRIO - CELULAR
+===================================================== */
 
 @media (max-width: 576px) {
 
@@ -126,6 +130,7 @@ body {
     .calendario-lateral,
     .calendario-atual {
         width: 100%;
+        max-width: 320px;
     }
 
     .calendario-atual {
@@ -159,7 +164,7 @@ body {
 }
 
 
-/* Destaque do m?s atual */
+/* Destaque do m√™s atual */
 .calendario-destaque .calendario {
     --bs-table-color: #000000;
     --bs-table-striped-color: #000000;
@@ -171,24 +176,6 @@ body {
     color: #000000 !important;
 }
 
-/* =====================================================
-   CALEND¡RIO - CELULAR
-===================================================== */
-
-@media (max-width: 576px) {
-
-    .calendarios {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .calendario-lateral,
-    .calendario-atual {
-        width: 100%;
-        max-width: 320px;
-    }
-}
-
 
 /* =====================================================
    TABELAS
@@ -196,4 +183,14 @@ body {
 
 .calendario {
     margin-bottom: 0;
+}
+
+
+/* =====================================================
+   FONTES DOS DADOS
+===================================================== */
+
+.table-fontes th,
+.table-fontes td {
+    background-color: transparent;
 }
