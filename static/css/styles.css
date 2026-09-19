@@ -66,10 +66,9 @@ body {
    CALENDÁRIO
 ===================================================== */
 
-/* Card principal */
 .calendario-card {
-    background-color: transparent;
-    border: none;
+    background-color: var(--webapp-card-bg);
+    border: 1px solid var(--webapp-border);
 }
 
 /* Container dos três meses */
@@ -189,6 +188,21 @@ body {
 /* =====================================================
    FONTES DOS DADOS
 ===================================================== */
+
+section:has(.table-fontes) {
+    background-color: var(--webapp-grupo-bg);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 0.375rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+section:has(.table-fontes) .table-responsive {
+    background-color: var(--webapp-card-bg);
+    border: 1px solid var(--webapp-border);
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+}
 
 .table-fontes th,
 .table-fontes td {
