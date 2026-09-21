@@ -19,6 +19,7 @@ class Temperatura(Model):
     uf = CharField()
     regiao = CharField()
     temperatura = DecimalField(null=True)
+    temperatura_exibicao = CharField()
     dt_referencia = DateTimeField()
 
     class Meta:

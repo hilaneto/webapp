@@ -71,10 +71,9 @@ def home():
         temperaturas.append({
             "regiao": registro.regiao,
             "cidade": registro.cidade,
-            "temperatura": registro.temperatura,
+            "temperatura": registro.temperatura_exibicao,
             "dt_referencia": registro.dt_referencia,
         })
-
 
     # Calendário -------------------------------------------------
     dt_atual = datetime.now()

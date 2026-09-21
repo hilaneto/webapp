@@ -507,38 +507,20 @@
         <section class="grupo-indicadores p-3 mb-4 rounded">
 
             <div class="card shadow-sm mx-auto" style="max-width: 500px;">
-
                 <div class="card-body py-2 px-3">
-
-                    <div class="text-center mb-2 fw-bold">
-                        Temperatura nas Capitais
-                    </div>
-
+                    <div class="text-center mb-2 fw-bold"> Temperatura nas Capitais </div>
                     <div style="max-height: 220px; overflow-y: auto;">
-
                         {% for item in temperaturas %}
-
                         <div
                             class="d-flex justify-content-between align-items-center py-0 border-bottom"
                             style="font-size: 0.80rem;"
                         >
-
-                            <span>
-                                {{ item.cidade }}
-                            </span>
-
-                            <strong>
-                                {{ item.temperatura }}
-                            </strong>
-
+                            <span> {{ item.cidade }} </span>
+                            <strong> {{ item.temperatura }} </strong>
                         </div>
-
                         {% endfor %}
-
                     </div>
-
                 </div>
-
             </div>
 
         </section>
